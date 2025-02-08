@@ -8,6 +8,7 @@ class Program
         PhotoProcessor processor = new PhotoProcessor();
         processor.ProcessImage(photo, PhotoFilters.ApplySharpnessFilter);
 
+
     }
 
     public class Photo
@@ -25,6 +26,7 @@ class Program
         // the delegate signature (function pointer cpp)
         public void ProcessImage(Photo photo, PhotoFilterHandler FilterHanlderToApply)
         {
+            FilterHanlderToApply(photo);
         }
 
     }
