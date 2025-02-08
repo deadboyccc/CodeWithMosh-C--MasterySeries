@@ -1,0 +1,15 @@
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\bin\Debug\net9.0\series2.exe
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\bin\Debug\net9.0\series2.deps.json
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\bin\Debug\net9.0\series2.runtimeconfig.json
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\bin\Debug\net9.0\series2.dll
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\bin\Debug\net9.0\series2.pdb
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.sourcelink.json
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.dll
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\refint\series2.dll
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.pdb
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\series2.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\Projects\CodeWithMosh-C#-MasterySeries\series2\obj\Debug\net9.0\ref\series2.dll
