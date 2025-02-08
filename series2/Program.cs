@@ -63,8 +63,22 @@ internal class Program
     }
     class Person
     {
+        // ctro =constructor, prop = property snippets
+        // auto property = create private fields behind the scenes
         public string Name { get; set; }
         public int Age { get; set; }
+        public int AgeInDays
+        {
+            // get
+            // {
+            //     return Age * 365;
+            // }
+            // using the TimeSpan class
+            get
+            {
+                return new TimeSpan(Age, 0, 0).Days;
+            }
+        }
         public List<Person> friends;
         // one constructor with default value = cleaner, but this is just for learning :3
         public Person()
