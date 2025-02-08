@@ -4,11 +4,35 @@ class Program
 {
     static void Main(string[] args)
     {
+        #region lambda
+        #endregion
+
+    }
+
+    /*
+    -Summary of delegates: an object that knows how to excute 1 or more function pointers (functions=methods int his context)
+    -used in event-driven patterns
+    */
+    private static void Delegates()
+    {
         Photo photo = new Photo("photo.jpg");
         PhotoProcessor processor = new PhotoProcessor();
-        processor.ProcessImage(photo, PhotoFilters.ApplySharpnessFilter);
+        // delegate will excute all these function pointers when called
+        // THEY DON'T EXCUTE IN ORDER - AND RE-ASSIGNING THEM = OVERWRITE
+        // delegate type = adding function/s
+        Action<Photo> groupOfHanlders = PhotoFilters.ApplySharpnessFilter;
+        groupOfHanlders += PhotoFilters.ApplyBrightnessFilter;
+        groupOfHanlders += PhotoFilters.ApplyColorFilter;
+        // adding an extention custom filter (the purpose of delegates is to add extensibility without recompiling the lib/framework)
+        groupOfHanlders += CustomFilter;
 
+        // calling them using a method
+        processor.ProcessImage(photo, groupOfHanlders);
+    }
 
+    public static void CustomFilter(Photo photo)
+    {
+        Console.WriteLine("Applying custom filter to photo: " + photo.Path);
     }
 
     public class Photo
@@ -21,10 +45,15 @@ class Program
     }
     public class PhotoProcessor
     {
-        public delegate void PhotoFilterHandler(Photo photo);
+        // both have many overloads 
+        // System.action<input type> : void
+        // System.Func<input type, return type> : return type
+        #region removing the deligate
+        // public delegate void PhotoFilterHandler(Photo photo);
+        #endregion
         // delegates = one filter or many that will be excuted and can be extensible as long as they follow
         // the delegate signature (function pointer cpp)
-        public void ProcessImage(Photo photo, PhotoFilterHandler FilterHanlderToApply)
+        public void ProcessImage(Photo photo, Action<Photo> FilterHanlderToApply)
         {
             FilterHanlderToApply(photo);
         }
