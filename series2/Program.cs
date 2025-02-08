@@ -8,7 +8,10 @@ internal class Program
     static void Main(string[] args)
     {
 
+    }
 
+    private static void draftie()
+    {
         #region Person Class 
         Console.WriteLine(new StringBuilder().Append('-', 20));
         Console.WriteLine("Hello, World!");
@@ -47,16 +50,11 @@ internal class Program
         Console.WriteLine("Filtered array: " + string.Join(", ", filteredArr));
         #endregion
 
-
-
-
-
-
-
     }
+
     class Test
     {
-        private Dictionary<string, string> test = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> test = new();
         // implementing an index overload
         public string this[string key]
         {
