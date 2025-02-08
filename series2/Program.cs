@@ -7,6 +7,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+
         #region Person Class 
         Console.WriteLine(new StringBuilder().Append('-', 20));
         Console.WriteLine("Hello, World!");
@@ -51,6 +53,30 @@ internal class Program
 
 
 
+    }
+    class Test
+    {
+        private Dictionary<string, string> test = new Dictionary<string, string>();
+        // implementing an index overload
+        public string this[string key]
+        {
+            get
+            {
+                if (test.ContainsKey(key))
+                {
+                    return test[key];
+                }
+                else
+                {
+                    return "Key not found";
+                }
+            }
+            set
+            {
+                // value = rhs = keyword
+                test[key] = value;
+            }
+        }
     }
     abstract class LivingBeing
     {
