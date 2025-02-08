@@ -1,7 +1,4 @@
-namespace Series1.math
-{
-
-}
+namespace Series1.mathTest;
 class Math
 {
   public static int Add(int a, int b)
