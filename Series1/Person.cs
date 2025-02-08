@@ -1,3 +1,5 @@
+namespace Series1.human;
+// Interal = assembly lvl (bunch of namespaces)
 internal partial class Program
 {
   public class Person

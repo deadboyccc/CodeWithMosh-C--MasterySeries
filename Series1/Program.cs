@@ -1,4 +1,5 @@
-﻿internal partial class Program
+﻿namespace Series1;
+internal partial class Program
 {
   private static void Main(string[] args)
   {
