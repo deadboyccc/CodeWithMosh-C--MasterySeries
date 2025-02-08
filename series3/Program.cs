@@ -1,10 +1,25 @@
-﻿namespace series3;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+namespace series3;
 
 class Program
 {
     static void Main(string[] args)
     {
         #region lambda
+        Func<int, int> square = (num) => num * num;
+        System.Console.WriteLine(square(10));
+        var books = new List<Product>{
+            new Product{Name="Book1", Price=1},
+            new Product{Name="Book2", Price=2},
+            new Product{Name="Book3", Price=3},
+            new Product{Name="Book4", Price=4},
+            new Product{Name="Book5", Price=5},
+        };
+        var cheapBooks = books.FindAll(product => product.Price <= 2);
+        cheapBooks.ForEach((item) => Console.WriteLine(item.Price));
+
         #endregion
 
     }
@@ -13,6 +28,17 @@ class Program
     -Summary of delegates: an object that knows how to excute 1 or more function pointers (functions=methods int his context)
     -used in event-driven patterns
     */
+    public class Product
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public Product()
+        {
+            Name = "default";
+            Price = 0;
+        }
+
+    }
     private static void Delegates()
     {
         Photo photo = new Photo("photo.jpg");
