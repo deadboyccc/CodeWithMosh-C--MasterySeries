@@ -25,9 +25,31 @@ internal class Program
             new Person("Trump", 100)
         );
         p1.friends.ForEach(p => Console.WriteLine(p.Name));
-
-
         #endregion
+
+        #region arrays functional methods
+        var arr1 = new List<int> { 1, 2, 3, 4, 5 };
+
+        // reduce = Aggregation
+        int sum = arr1.Aggregate(0, (accu, num) => accu + num);
+        int evenSum = arr1.Aggregate(0, (acc, num) => num % 2 == 0 ? acc += num : acc);
+        Console.WriteLine($"Sum of the numbers: {sum}");
+        Console.WriteLine($"Sum of the even numbers: {evenSum}");
+
+        // map = select
+        var mappedArr = arr1.Select(num => num * 2).ToList();
+        Console.WriteLine("Mapped array: " + string.Join(", ", mappedArr));
+
+        // filter = filter
+        var filteredArr = arr1.Where(num => num % 2 == 0).ToList();
+        Console.WriteLine("Filtered array: " + string.Join(", ", filteredArr));
+        #endregion
+
+
+
+
+
+
 
     }
     abstract class LivingBeing
