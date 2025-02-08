@@ -1,4 +1,5 @@
-﻿using Series1.human;
+﻿using System.Text;
+using Series1.human;
 using Series1.mathTest;
 
 namespace Series1;
@@ -6,6 +7,13 @@ internal partial class Program
 {
   private static void Main(string[] args)
   {
+    Console.WriteLine(new StringBuilder().Append('*', 12));
+    #region dealWithFiles
+
+
+
+    #endregion
+    Console.WriteLine(new StringBuilder().Append('*', 12));
     Series1.types.Enu testEnum = types.Enu.Three;
     System.Console.WriteLine(testEnum);
     System.Console.WriteLine((uint)testEnum);
@@ -18,6 +26,7 @@ internal partial class Program
     System.Console.WriteLine(finalResult);
     var date = DateTime.Now;
     var duration = new TimeSpan(1, 2, 3);
+    Console.WriteLine(new StringBuilder().Append('*', 12));
     System.Console.WriteLine(date.ToString("HH"));
     System.Console.WriteLine("---------");
     System.Console.WriteLine("---------");
