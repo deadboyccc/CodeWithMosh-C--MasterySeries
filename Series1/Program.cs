@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Text;
 using Series1.human;
 using Series1.mathTest;
 
@@ -9,10 +11,36 @@ internal partial class Program
   {
     Console.WriteLine(new StringBuilder().Append('*', 12));
     #region dealWithFiles
+    var filePathEx = "./data/test.txt";
+    if (File.Exists(filePathEx))
+    {
+      // write a aggregate function to count how many "F" or "f" in the text
+      var text = File.ReadAllText(filePathEx);
+      int count = text.Aggregate(0, (acc, c) => (c == 'F' || c == 'f') ? acc + 1 : acc);
 
-
+      System.Console.WriteLine(text.ElementAt(0));
+    }
+    if (Directory.Exists("."))
+    {
+      var files = Directory.GetFiles(".", "*.cs");
+      foreach (var file in files)
+      {
+        System.Console.WriteLine(file);
+      }
+      var CurrentDirectory = Directory.GetCurrentDirectory();
+      System.Console.WriteLine($"cwd : {CurrentDirectory}");
+    }
+    // path parse
+    #region Path
+    Console.WriteLine(Path.GetExtension("program.cpp").Substring(1));
+    #endregion
 
     #endregion
+    // cleanCodeBestPractices();
+  }
+
+  private static void cleanCodeBestPractices()
+  {
     Console.WriteLine(new StringBuilder().Append('*', 12));
     Series1.types.Enu testEnum = types.Enu.Three;
     System.Console.WriteLine(testEnum);
