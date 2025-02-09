@@ -12,8 +12,9 @@ internal class Program
     {
         Circle circle = new Circle() { Width = 5, Height = 5, X = 10, Y = 10 };
         Rectangle rectangle = new Rectangle() { Width = 10, Height = 5, X = 5, Y = 5 };
+        Triangle triangle = new Triangle() { Width = 5, Height = 5, X = 15, Y = 15 };
         List<Shape> shapeList = new(){
-            circle, rectangle
+            circle, rectangle, triangle
         };
         foreach (var shape in shapeList)
         {
@@ -22,11 +23,19 @@ internal class Program
 
     }
     #region poly
+    public class Triangle : Shape
+    {
+        public override void Draw()
+        {
+            System.Console.WriteLine("Drawing Triangle");
+            base.Draw();
+
+        }
+    }
     public class Circle : Shape
     {
         public override void Draw()
         {
-            // log
             System.Console.WriteLine("Drawing Circle");
             base.Draw();
         }
@@ -36,7 +45,6 @@ internal class Program
     {
         public override void Draw()
         {
-            // log
             System.Console.WriteLine("Drawing Rectangle");
             base.Draw();
 
