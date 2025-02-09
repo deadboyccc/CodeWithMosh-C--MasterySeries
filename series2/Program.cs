@@ -1,11 +1,67 @@
-﻿using System.Data;
+﻿using System.Collections;
+using System.Data;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace series2;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
+    {
+        // both ref the same location in heap
+        // upcast from child to parent - form base to derived
+        //define a stream to the same file but with only read capabilities
+        var textBox = new TextBox();
+        var shape = textBox;
+        var castedTextBo = shape as TextBox;
+        // null checking
+        castedTextBo?.Draw();
+        if (castedTextBo is TextBox)
+        {
+            System.Console.WriteLine("true ");
+        }
+
+        textBox.Width = 100;
+        shape.Width = 50;
+        System.Console.WriteLine(shape.Width);
+        var objList = new ArrayList();
+        objList.Add(new Car("137", 4));
+        objList.Add(new Shape());
+        objList.Add(1);
+        foreach (var obj in objList)
+        {
+            await WaitOneSec();
+            System.Console.WriteLine(obj.GetType());
+
+        }
+
+    }
+    public static Task WaitOneSec()
+    {
+
+        return Task.Delay(1000);
+    }
+    #region upcasting and downcasting
+    public class Shape
+    {
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public void Draw()
+        {
+            System.Console.WriteLine($"Drawing shape at ({X}, {Y})");
+        }
+    }
+    public class TextBox : Shape
+    {
+        public string? Font { get; set; }
+        public int FontSize { get; set; }
+    }
+    #endregion
+    private static void InheritanceEx()
     {
         var c1 = new Car("137", 2);
     }
