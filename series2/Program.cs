@@ -7,13 +7,73 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+    }
+    #region Inheritance
+    public class Vehicle
+    {
+        public string LegalNum { get; set; }
+        public Vehicle(string legalNum)
+        {
+            System.Console.WriteLine("Vehile Init");
+            LegalNum = legalNum;
+        }
+    }
+    public class Car : Vehicle
+    {
+        public int Doors { get; set; }
+        public Car(string legalNum, int doors) : base(legalNum)
+        {
+            System.Console.WriteLine("Car Init");
+            Doors = doors;
+        }
+    }
+    public class GoldCustomer : Customer
+    {
+        public void OfferVoucher()
+        {
+            Console.WriteLine("Offering 11% voucher for next purchase");
+            this.Promote();
+        }
+
+    }
+    public class Customer
+    {
+        public int index { get; set; }
+        public string? Name { get; set; }
+        public void Promote()
+        {
+            var loyaltyLevel = CalculateRating();
+            switch (loyaltyLevel)
+            {
+                case 1:
+                    Console.WriteLine("Customer is a Silver Member");
+                    break;
+                case 2:
+                    Console.WriteLine("Customer is a Gold Member");
+                    break;
+                case 3:
+                    Console.WriteLine("Customer is a Platinum Member");
+                    break;
+                default:
+                    Console.WriteLine("Customer is not a member");
+                    break;
+            }
+        }
+        private int CalculateRating()
+        {
+            return new Random().Next(1, 4);
+        }
+    }
+    #endregion
+
+    private static void association()
+    {
         var DbMigrator = new DbMigrator(new Logger());
         var installer = new Installer(new Logger());
 
         DbMigrator.Migrate();
         installer.Install();
-
-
     }
     #region composition
     class Logger
