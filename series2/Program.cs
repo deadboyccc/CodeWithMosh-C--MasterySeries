@@ -9,6 +9,36 @@ internal class Program
     {
 
     }
+    #region association/composition 
+    class Text : PresentationObject
+    {
+        public string? FontName { get; set; }
+        public int FontSize { get; set; }
+        public string? TextContent { get; set; }
+        public void addHyperlink(string url)
+        {
+            System.Console.WriteLine($"add hyperlink: {url}");
+        }
+    }
+    class PresentationObject
+
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public void Copy()
+        {
+            System.Console.WriteLine("copy");
+
+        }
+        public void Duplicate()
+        {
+            System.Console.WriteLine("duplicate");
+
+        }
+
+    }
+
+    #endregion
 
     private static void draftie()
     {
