@@ -7,8 +7,51 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var DbMigrator = new DbMigrator(new Logger());
+        var installer = new Installer(new Logger());
+
+        DbMigrator.Migrate();
+        installer.Install();
+
 
     }
+    #region composition
+    class Logger
+    {
+        public void LogMessage(string message)
+        {
+            System.Console.WriteLine($"[{DateTime.Now}] {message}");
+        }
+    }
+    class DbMigrator
+    {
+        private readonly Logger Logger;
+        public DbMigrator(Logger loggerInstance)
+
+        {
+            Logger = loggerInstance;
+
+        }
+
+        public void Migrate()
+        {
+            Logger.LogMessage("DbMigrator started migration");
+        }
+    }
+    class Installer
+    {
+        private readonly Logger logger;
+
+        public Installer(Logger loggerInstance)
+        {
+            this.logger = loggerInstance;
+        }
+        public void Install()
+        {
+            logger.LogMessage("Installer started installation");
+        }
+    }
+    #endregion
     #region association/composition 
     class Text : PresentationObject
     {
