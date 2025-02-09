@@ -7,7 +7,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-
+        var c1 = new Car("137", 2);
     }
     #region Inheritance
     public class Vehicle
@@ -15,7 +15,7 @@ internal class Program
         public string LegalNum { get; set; }
         public Vehicle(string legalNum)
         {
-            System.Console.WriteLine("Vehile Init");
+            System.Console.WriteLine($"Vehile Init {legalNum}");
             LegalNum = legalNum;
         }
     }
@@ -24,7 +24,7 @@ internal class Program
         public int Doors { get; set; }
         public Car(string legalNum, int doors) : base(legalNum)
         {
-            System.Console.WriteLine("Car Init");
+            System.Console.WriteLine($"Car Init {legalNum}");
             Doors = doors;
         }
     }
