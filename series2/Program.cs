@@ -11,7 +11,7 @@ internal class Program
     static void Main(string[] args)
     {
         Circle circle = new Circle() { Width = 5, Height = 5, X = 10, Y = 10 };
-        Rectangle rectangle = new Rectangle() { Width = 10, Height = 5, X = 5, Y = 5 };
+        Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle() { Width = 5, Height = 5, X = 15, Y = 15 };
         List<Shape> shapeList = new(){
             circle, rectangle, triangle
@@ -28,7 +28,6 @@ internal class Program
         public override void Draw()
         {
             System.Console.WriteLine("Drawing Triangle");
-            base.Draw();
 
         }
     }
@@ -37,7 +36,6 @@ internal class Program
         public override void Draw()
         {
             System.Console.WriteLine("Drawing Circle");
-            base.Draw();
         }
 
     }
@@ -46,21 +44,17 @@ internal class Program
         public override void Draw()
         {
             System.Console.WriteLine("Drawing Rectangle");
-            base.Draw();
 
         }
 
     }
-    public class Shape
+    public abstract class Shape
     {
         public double Width { get; set; }
         public double Height { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public virtual void Draw()
-        {
-            System.Console.WriteLine($"Drawing Shape at ({X},{Y}) with Width: {Width}, Height: {Height}");
-        }
+        public abstract void Draw();
         #endregion
 
         private static async Task Inheritance1()
@@ -83,7 +77,6 @@ internal class Program
             System.Console.WriteLine(shape.Width);
             var objList = new ArrayList();
             objList.Add(new Car("137", 4));
-            objList.Add(new Shape());
             objList.Add(1);
             foreach (var obj in objList)
             {
@@ -101,8 +94,13 @@ internal class Program
         #region upcasting and downcasting
         public class TextBox : Shape
         {
+
             public string? Font { get; set; }
             public int FontSize { get; set; }
+            public override void Draw()
+            {
+                throw new NotImplementedException();
+            }
         }
         #endregion
         private static void InheritanceEx()
