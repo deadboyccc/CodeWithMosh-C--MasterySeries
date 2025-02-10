@@ -1,5 +1,2048 @@
-wfee
-afweff
-awjefiojawiofea
-afweff
-awjefiojawiofea
+<!DOCTYPE html><html
+	class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light"
+	lang="en-us"
+	dir="ltr"
+	data-authenticated="false"
+	data-auth-status-determined="false"
+	data-target="docs"
+	x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Kestrel web server in ASP.NET Core" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-9.0" /><meta property="og:description" content="Learn about Kestrel, the cross-platform web server for ASP.NET Core." /><meta property="og:image" content="https://learn.microsoft.com/dotnet/media/dotnet-logo.png" />
+
+	<meta property="og:image:alt" content="Kestrel web server in ASP.NET Core | Microsoft Learn" />
+
+	<meta name="twitter:card" content="summary" />
+
+	<meta name="twitter:site" content="@MicrosoftLearn" />
+
+	<meta name="color-scheme" content="light dark"><meta name="author" content="tdykstra" />
+<meta name="breadcrumb_path" content="/aspnet/core/breadcrumb/toc.json" />
+<meta name="default_moniker" content="aspnetcore-9.0" />
+<meta name="depot_name" content="MSDN.aspnet-core-conceptual" />
+<meta name="description" content="Learn about Kestrel, the cross-platform web server for ASP.NET Core." />
+<meta name="document_id" content="f22dcddb-0c25-be1a-9a02-9e71dce86bdb" />
+<meta name="document_version_independent_id" content="3e0e12c2-e544-5655-e001-d2ec180b11a8" />
+<meta name="feedback_help_link_type" content="" />
+<meta name="feedback_help_link_url" content="" />
+<meta name="feedback_product_url" content="https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md" />
+<meta name="feedback_system" content="OpenSource" />
+<meta name="git_commit_id" content="ae3ee11bd4e1558ffe79eecedda247970f2b56c4" />
+<meta name="gitcommit" content="https://github.com/dotnet/AspNetCore.Docs/blob/ae3ee11bd4e1558ffe79eecedda247970f2b56c4/aspnetcore/fundamentals/servers/kestrel.md" />
+<meta name="locale" content="en-us" />
+<meta name="monikerRange" content=">= aspnetcore-3.1" />
+<meta name="monikers" content="aspnetcore-10.0" />
+<meta name="monikers" content="aspnetcore-3.1" />
+<meta name="monikers" content="aspnetcore-5.0" />
+<meta name="monikers" content="aspnetcore-6.0" />
+<meta name="monikers" content="aspnetcore-7.0" />
+<meta name="monikers" content="aspnetcore-8.0" />
+<meta name="monikers" content="aspnetcore-9.0" />
+<meta name="ms.author" content="tdykstra" />
+<meta name="ms.custom" content="mvc" />
+<meta name="ms.date" content="04/04/2023" />
+<meta name="ms.service" content="aspnet-core" />
+<meta name="ms.subservice" content="fundamentals" />
+<meta name="ms.topic" content="conceptual" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/AspNetCore.Docs/blob/live/aspnetcore/fundamentals/servers/kestrel.md" />
+<meta name="page_type" content="conceptual" />
+<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/MSDN.aspnet-core-conceptual/{branchName}{pdfName}" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc.json" />
+<meta name="uhfHeaderId" content="MSDocsHeader-AspNet" />
+<meta name="uid" content="fundamentals/servers/kestrel" />
+<meta name="updated_at" content="2024-07-26 05:48 PM" />
+<meta name="word_count" content="6698" />
+<meta name="persistent_id" content="1464e7f0-899a-541e-4b11-134d7f16a7be" />
+	
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/d452572f-6212-498f-9050-ca4a9e50a425" data-source="generated" />
+	
+	<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/a12e40b7-59a2-4437-96e2-166ce622b864" data-source="generated" />
+	<meta name="scope" content="ASP.NET Core" /><meta name="github_feedback_content_git_url" content="https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/servers/kestrel.md" /><link href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-9.0" rel="canonical"><title>Kestrel web server in ASP.NET Core | Microsoft Learn</title><link rel="stylesheet" href="/static/assets/0.4.029566255/styles/site-ltr.css">
+
+	<script id="msdocs-script">
+	var msDocs = {environment: {
+			supportLevel: 'production',
+			accessLevel: 'online',
+			reviewFeatures: false,
+			systemContent: true,
+			azurePortalHostname: 'portal.azure.com',
+			legacyHosting: false,
+			siteName: 'learn',
+		},data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {},
+			hasBinaryRating: true,
+			feedbackHelpLinkType:'',
+			feedbackHelpLinkUrl:'',
+			standardFeedback: false,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'OpenSource',
+			feedbackGitHubRepo: 'dotnet/AspNetCore.Docs',
+			feedbackProductUrl: 'https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md',extendBreadcrumb: false,isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,hasRecommendations: true,openSourceFeedback: true,
+			openSourceFeedbackIssueUrl: 'https://github.com/dotnet/aspnetcore.docs/issues/new?template=customer-feedback.yml',
+			openSourceFeedbackIssueTitle: '',
+			openSourceFeedbackIssueLabels: 'Source - Docs.ms,:watch: Not Triaged',contributors: [{ name: "tdykstra", url: "https://github.com/tdykstra" },{ name: "wadepickett", url: "https://github.com/wadepickett" },{ name: "JamesNK", url: "https://github.com/JamesNK" },{ name: "Rick-Anderson", url: "https://github.com/Rick-Anderson" },{ name: "asbjornu", url: "https://github.com/asbjornu" },{ name: "guardrex", url: "https://github.com/guardrex" },{ name: "superyyrrzz", url: "https://github.com/superyyrrzz" },{ name: "serpent5", url: "https://github.com/serpent5" },{ name: "scottaddie", url: "https://github.com/scottaddie" },{ name: "cihanucar", url: "https://github.com/cihanucar" },{ name: "halter73", url: "https://github.com/halter73" },{ name: "jkotalik", url: "https://github.com/jkotalik" },{ name: "Tratcher", url: "https://github.com/Tratcher" },{ name: "aL3891", url: "https://github.com/aL3891" },{ name: "MelbourneDeveloper", url: "https://github.com/MelbourneDeveloper" },{ name: "Faulknerd", url: "https://github.com/Faulknerd" },{ name: "analogrelay", url: "https://github.com/analogrelay" },{ name: "poke", url: "https://github.com/poke" },{ name: "v-thepet", url: "https://github.com/v-thepet" },{ name: "m17kea", url: "https://github.com/m17kea" },{ name: "jimbuck", url: "https://github.com/jimbuck" },{ name: "JunTaoLuo", url: "https://github.com/JunTaoLuo" },{ name: "vuchl", url: "https://github.com/vuchl" },{ name: "WasserEsser", url: "https://github.com/WasserEsser" },{ name: "isaac2004", url: "https://github.com/isaac2004" },{ name: "v-anpasi", url: "https://github.com/v-anpasi" },{ name: "charlie-collietech", url: "https://github.com/charlie-collietech" },{ name: "benmunro", url: "https://github.com/benmunro" }],},
+		functions:{}
+	};
+	</script><script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script><script src="/static/assets/0.4.029566255/global/deprecation.js"></script><script src="/static/assets/0.4.029566255/scripts/en-us/index-docs.js"></script></head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center  has-body-background" tabindex="1">Skip to main content</a><div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">Download Microsoft Edge</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">More info about Internet Explorer and Microsoft Edge</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" data-test-id="site-header-wrapper" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+			<div id="ms--mobile-nav" class="site-header display-none-tablet padding-inline-none gap-none" data-bi-name="mobile-header" data-test-id="mobile-header"></div>
+			<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"></div>
+			<div id="ms--secondary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L2-header" data-test-id="secondary-header"></div>
+		</header><div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button>
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">Table of contents</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Exit focus mode</span>
+					</button>
+				</div>
+			</div><div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile "><div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-sticky display-flex flex-direction-column" aria-label="Primary"></nav>
+			</div><!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps "><div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr"><!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center "><details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs">
+										<summary class="button button-clear button-primary button-sm inner-focus" aria-label="All breadcrumbs">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+
+									<bread-crumbs id="article-header-breadcrumbs" data-test-id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"></bread-crumbs><div id="article-header-page-actions"  class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"><a
+											id="lang-link-tablet"
+											class="button button-primary button-clear button-sm display-none display-inline-flex-tablet"
+											title="Read in English" data-bi-name="language-toggle"
+											data-read-in-link
+											hidden>
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon>
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text>Read in English</span>
+										</a><button
+												type="button"
+												class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet"
+												data-list-type="collection"
+												data-bi-name="collection"
+												title="Add to collection">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Save</span>
+											</button><a	data-contenteditbtn
+												class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet"
+												aria-label="Edit"
+												title="Edit This Document"
+												data-bi-name="edit"
+														href="https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/servers/kestrel.md"
+														data-original_content_git_url="https://github.com/dotnet/AspNetCore.Docs/blob/live/aspnetcore/fundamentals/servers/kestrel.md"
+														data-original_content_git_url_template="{repo}/blob/{branch}/aspnetcore/fundamentals/servers/kestrel.md"
+														data-pr_repo=""
+														data-pr_branch="">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-edit-outline"></span>
+												</span>
+											</a>
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="More actions" title="More actions">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-xs"><button
+														data-page-action-item="overflow-mobile"
+														type="button"
+														class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet"
+														data-bi-name="contents-expand"
+														data-contents-button
+														data-popover-close>
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span><span class="contents-expand-title">Table of contents</span></button><a
+													id="lang-link-overflow"
+													class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet"
+													title="Read in English" data-bi-name="language-toggle"
+													data-page-action-item="overflow-mobile"
+													data-check-hidden="true"
+													data-read-in-link
+													hidden
+													>
+													<span class="icon" aria-hidden="true" data-read-in-link-icon>
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text>Read in English</span>
+												</a><button
+														type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="collection"
+														data-bi-name="collection"
+														title="Save"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Save</span>
+													</button>
+
+			 										
+													<button
+													 	type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="plan"
+														data-bi-name="plan"
+														title="Add to plan"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close
+														hidden>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="plan-status">Add to plan</span>
+													</button><a	data-contenteditbtn
+														class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet"
+														aria-label="Edit"
+														title="Edit This Document"
+														data-bi-name="edit"
+																href="https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/servers/kestrel.md"
+																data-original_content_git_url="https://github.com/dotnet/AspNetCore.Docs/blob/live/aspnetcore/fundamentals/servers/kestrel.md"
+																data-original_content_git_url_template="{repo}/blob/{branch}/aspnetcore/fundamentals/servers/kestrel.md"
+																data-pr_repo=""
+																data-pr_branch="">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-edit-outline"></span>
+														</span>
+														<span>Edit</span>
+													</a><div aria-hidden="true" class="margin-none" data-page-action-item="overflow-all"></div>
+														<hr class="display-none-tablet margin-bottom-xxs margin-top-xxs" />
+														<h4 class="font-size-sm padding-left-xxs">Share via</h4>
+
+													<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-facebook-share font-size-md color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Facebook</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-xlogo-share font-size-xxs"></span>
+															</span>
+															<span class="margin-left-xxs">x.com</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-linked-in-logo font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start margin-bottom-xxs share-email" data-bi-name="email" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Email</span>
+														</a><hr />
+													<button
+														class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus margin-top-xxs"
+														title="Print"
+														type="button"
+														aria-label="Print"
+														data-bi-name="print"
+														data-page-action-item="overflow-all"
+														data-popover-close
+														data-print-page
+														data-check-hidden="true">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print font-size-sm color-primary"></span>
+														</span>
+														<span class="margin-left-xxs">Print</span>
+													</button>
+											</div>
+										</details>
+										
+									</div></div>
+							</div>
+							<!-- end article-header --><div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span><span class="contents-expand-title">Table of contents</span></button>
+							</div><!-- end mobile-contents button  -->
+
+							<div class="content "><h1 id="kestrel-web-server-in-aspnet-core">Kestrel web server in ASP.NET Core</h1><div class="display-flex justify-content-space-between align-items-center flex-wrap-wrap page-metadata-container">
+										<div class="margin-right-xxs">
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr"><li>Article</li><li class="visibility-hidden-visual-diff"><time class="is-invisible" data-article-date aria-label="Article review date" datetime="2024-07-26T17:48:00Z" data-article-date-source="calculated">07/26/2024</time>
+															</li><li class="contributors-holder display-none-print">
+															<button aria-label="View all contributors" class="contributors-button link-button" data-bi-name="contributors" title="View all contributors">28 contributors</button>
+														</li></ul>
+										</div>
+<div id="user-feedback" class="margin-block-xxs display-none-print" data-hide-on-archived>
+	<button
+		id="user-feedback-button"
+		data-test-id="conceptual-feedback-button"
+		class="button button-sm button-clear button-primary"
+		type="button"
+		data-bi-name="user-feedback-button"
+		data-user-feedback-button
+	>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-like"></span>
+		</span>
+		<span>Feedback</span>
+	</button>
+</div></div><nav id="center-doc-outline" class="doc-outline is-hidden-desktop display-none-print margin-bottom-sm" data-bi-name="intopic toc" aria-label="In this article">
+											<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">In this article</h2>
+										</nav><!-- <content> --><div data-moniker="aspnetcore-3.1 aspnetcore-5.0 aspnetcore-6.0 aspnetcore-7.0 aspnetcore-8.0">
+<div class="NOTE">
+<p>Note</p>
+<p>This isn't the latest version of this article. For the current release, see the <a href="?view=aspnetcore-9.0&amp;preserve-view=true" data-linktype="relative-path">.NET 9 version of this article</a>.</p>
+</div>
+</div>
+<div data-moniker="aspnetcore-3.1 aspnetcore-5.0 aspnetcore-7.0">
+<div class="WARNING">
+<p>Warning</p>
+<p>This version of ASP.NET Core is no longer supported. For more information, see the <a href="https://dotnet.microsoft.com/platform/support/policy/dotnet-core" data-linktype="external">.NET and .NET Core Support Policy</a>. For the current release, see the <a href="?view=aspnetcore-9.0&amp;preserve-view=true" data-linktype="relative-path">.NET 9 version of this article</a>.</p>
+</div>
+</div>
+<div data-moniker="aspnetcore-10.0">
+<div class="IMPORTANT">
+<p>Important</p>
+<p>This information relates to a pre-release product that may be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.</p>
+<p>For the current release, see the <a href="?view=aspnetcore-9.0&amp;preserve-view=true" data-linktype="relative-path">.NET 9 version of this article</a>.</p>
+</div>
+</div>
+<!--
+Include either this file or 'not-latest-version-without-not-supported-content.md' at the top 
+of articles.
+
+'not-latest-version.md' (this file): Includes not-supported content.
+'not-latest-version-without-not-supported-content.md': Doesn't include not-supported content.
+
+Use this file in articles that target >=7.0. For articles that target >=8.0 prior to 9.0
+reaching EOL, 'not-latest-version-without-not-supported-content.md' must be used to avoid
+a zone/file moniker range mismatch error.
+
+When a new version is released, it might be necessary to temporarily comment out the current 
+version moniker range section until the new moniker is created.
+
+Markdown to include this file:
+
+[!INCLUDE[](~/includes/not-latest-version.md)]
+-->
+<p>By <a href="https://github.com/tdykstra" data-linktype="external">Tom Dykstra</a>, <a href="https://github.com/Tratcher" data-linktype="external">Chris Ross</a>, and <a href="https://twitter.com/halter73" data-linktype="external">Stephen Halter</a></p>
+<div data-moniker="aspnetcore-10.0 aspnetcore-8.0 aspnetcore-9.0">
+<p>Kestrel is a cross-platform <a href="./?view=aspnetcore-9.0" data-linktype="relative-path">web server for ASP.NET Core</a>. Kestrel is the recommended server for ASP.NET Core, and it's configured by default in ASP.NET Core project templates.</p>
+<p>Kestrel's features include:</p>
+<ul>
+<li><strong>Cross-platform:</strong> Kestrel is a cross-platform web server that runs on Windows, Linux, and macOS.</li>
+<li><strong>High performance:</strong> Kestrel is optimized to handle a large number of concurrent connections efficiently.</li>
+<li><strong>Lightweight:</strong> Optimized for running in resource-constrained environments, such as containers and edge devices.</li>
+<li><strong>Security hardened:</strong> Kestrel supports HTTPS and is hardened against web server vulnerabilities.</li>
+<li><strong>Wide protocol support:</strong> Kestrel supports common web protocols, including:
+<ul>
+<li>HTTP/1.1, <a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">HTTP/2</a> and <a href="kestrel/http3?view=aspnetcore-9.0" data-linktype="relative-path">HTTP/3</a></li>
+<li><a href="../websockets?view=aspnetcore-9.0" data-linktype="relative-path">WebSockets</a></li>
+</ul>
+</li>
+<li><strong>Integration with ASP.NET Core:</strong> Seamless integration with other ASP.NET Core components, such as the middleware pipeline, dependency injection, and configuration system.</li>
+<li><strong>Flexible workloads</strong>: Kestrel supports many workloads:
+<ul>
+<li>ASP.NET app frameworks such as Minimal APIs, MVC, Razor pages, SignalR, Blazor, and gRPC.</li>
+<li>Building a reverse proxy with <a href="https://github.com/microsoft/reverse-proxy" data-linktype="external">YARP</a>.</li>
+</ul>
+</li>
+<li><strong>Extensibility:</strong> Customize Kestrel through configuration, middleware, and custom transports.</li>
+<li><strong>Performance diagnostics:</strong> Kestrel provides built-in performance diagnostics features, such as logging and metrics.</li>
+</ul>
+<h2 id="get-started">Get started</h2>
+<p>ASP.NET Core project templates use Kestrel by default when not hosted with IIS. In the following template-generated <code>Program.cs</code>, the <a href="/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplication.createbuilder" class="no-loc" data-linktype="absolute-path">WebApplication.CreateBuilder</a> method calls <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel" class="no-loc" data-linktype="absolute-path">UseKestrel</a> internally:</p>
+<pre><code class="lang-csharp" highlight-lines="1">var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/", () =&gt; "Hello World!");
+
+app.Run();
+</code></pre>
+<p>For more information on configuring <code>WebApplication</code> and <code>WebApplicationBuilder</code>, see <a href="../minimal-apis?view=aspnetcore-9.0" data-linktype="relative-path">Minimal APIs quick reference</a>.</p>
+<h2 id="optional-client-certificates">Optional client certificates</h2>
+<p>For information on apps that must protect a subset of the app with a certificate, see <a href="../../security/authentication/certauth?view=aspnetcore-9.0#optional-client-certificates" data-linktype="relative-path">Optional client certificates</a>.</p>
+<h2 id="behavior-with-debugger-attached">Behavior with debugger attached</h2>
+<p>The following timeouts and rate limits aren't enforced when a debugger is attached to a Kestrel process:</p>
+<ul>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserverlimits.keepalivetimeout#microsoft-aspnetcore-server-kestrel-kestrelserverlimits-keepalivetimeout" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.KeepAliveTimeout</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserverlimits.requestheaderstimeout#microsoft-aspnetcore-server-kestrel-kestrelserverlimits-requestheaderstimeout" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.RequestHeadersTimeout</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minrequestbodydatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minrequestbodydatarate" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.MinRequestBodyDataRate</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minresponsedatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minresponsedatarate" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.MinResponseDataRate</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.iconnectiontimeoutfeature" class="no-loc" data-linktype="absolute-path">IConnectionTimeoutFeature</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminrequestbodydataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinRequestBodyDataRateFeature</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminresponsedataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinResponseDataRateFeature</a></li>
+</ul>
+<h2 id="additional-resources">Additional resources</h2>
+<p><a name="endpoint-configuration"></a></p>
+<ul>
+<li><a href="kestrel/endpoints?view=aspnetcore-9.0" data-linktype="relative-path">Configure endpoints for the ASP.NET Core Kestrel web server</a></li>
+<li>Source for <a href="https://github.com/dotnet/aspnetcore/blob/v6.0.2/src/DefaultBuilder/src/WebHost.cs#L224" data-linktype="external"><code>WebApplication.CreateBuilder</code> method call to <code>UseKestrel</code></a>
+<a name="kestrel-options"></a></li>
+<li><a href="kestrel/options?view=aspnetcore-9.0" data-linktype="relative-path">Configure options for the ASP.NET Core Kestrel web server</a>
+<a name="http2-support"></a></li>
+<li><a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">Use HTTP/2 with the ASP.NET Core Kestrel web server</a>
+<a name="when-to-use-kestrel-with-a-reverse-proxy"></a></li>
+<li><a href="kestrel/when-to-use-a-reverse-proxy?view=aspnetcore-9.0" data-linktype="relative-path">When to use a reverse proxy with the ASP.NET Core Kestrel web server</a>
+<a name="host-filtering"></a></li>
+<li><a href="kestrel/host-filtering?view=aspnetcore-9.0" data-linktype="relative-path">Host filtering with ASP.NET Core Kestrel web server</a></li>
+<li><a href="../../test/troubleshoot?view=aspnetcore-9.0" data-linktype="relative-path">Troubleshoot and debug ASP.NET Core projects</a></li>
+<li><a href="../../security/enforcing-ssl?view=aspnetcore-9.0" data-linktype="relative-path">Enforce HTTPS in ASP.NET Core</a></li>
+<li><a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Configure ASP.NET Core to work with proxy servers and load balancers</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110#field.host" data-linktype="external">RFC 9110: HTTP Semantics (Section 7.2: Host and :authority)</a></li>
+<li>When using UNIX sockets on Linux, the socket isn't automatically deleted on app shutdown. For more information, see <a href="https://github.com/dotnet/aspnetcore/issues/14134" data-linktype="external">this GitHub issue</a>.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>As of ASP.NET Core 5.0, Kestrel's libuv transport is obsolete. The libuv transport doesn't receive updates to support new OS platforms, such as Windows ARM64, and will be removed in a future release. Remove any calls to the obsolete <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv" class="no-loc" data-linktype="absolute-path">UseLibuv</a> method and use Kestrel's default Socket transport instead.</p>
+</div>
+</div>
+<div data-moniker="aspnetcore-6.0 aspnetcore-7.0">
+<p>Kestrel is a cross-platform <a href="./?view=aspnetcore-9.0" data-linktype="relative-path">web server for ASP.NET Core</a>. Kestrel is the web server that's included and enabled by default in ASP.NET Core project templates.</p>
+<p>Kestrel supports the following scenarios:</p>
+<ul>
+<li>HTTPS</li>
+<li><a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">HTTP/2</a> (except on macOS†)</li>
+<li>Opaque upgrade used to enable <a href="../websockets?view=aspnetcore-9.0" data-linktype="relative-path">WebSockets</a></li>
+<li>Unix sockets for high performance behind Nginx</li>
+</ul>
+<p>†HTTP/2 will be supported on macOS in a future release.</p>
+<p>Kestrel is supported on all platforms and versions that .NET Core supports.</p>
+<h2 id="get-started">Get started</h2>
+<p>ASP.NET Core project templates use Kestrel by default when not hosted with IIS. In the following template-generated <code>Program.cs</code>, the <a href="/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplication.createbuilder" class="no-loc" data-linktype="absolute-path">WebApplication.CreateBuilder</a> method calls <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel" class="no-loc" data-linktype="absolute-path">UseKestrel</a> internally:</p>
+<pre><code class="lang-csharp" highlight-lines="1">var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/", () =&gt; "Hello World!");
+
+app.Run();
+</code></pre>
+<p>For more information on configuring <code>WebApplication</code> and <code>WebApplicationBuilder</code>, see <a href="../minimal-apis?view=aspnetcore-9.0" data-linktype="relative-path">Minimal APIs quick reference</a>.</p>
+<h2 id="optional-client-certificates">Optional client certificates</h2>
+<p>For information on apps that must protect a subset of the app with a certificate, see <a href="../../security/authentication/certauth?view=aspnetcore-9.0#optional-client-certificates" data-linktype="relative-path">Optional client certificates</a>.</p>
+<h2 id="behavior-with-debugger-attached">Behavior with debugger attached</h2>
+<p>The following timeouts and rate limits aren't enforced when a debugger is attached to a Kestrel process:</p>
+<ul>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserverlimits.keepalivetimeout#microsoft-aspnetcore-server-kestrel-kestrelserverlimits-keepalivetimeout" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.KeepAliveTimeout</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.kestrelserverlimits.requestheaderstimeout#microsoft-aspnetcore-server-kestrel-kestrelserverlimits-requestheaderstimeout" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.RequestHeadersTimeout</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minrequestbodydatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minrequestbodydatarate" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.MinRequestBodyDataRate</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minresponsedatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minresponsedatarate" class="no-loc" data-linktype="absolute-path">KestrelServerLimits.MinResponseDataRate</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.iconnectiontimeoutfeature" class="no-loc" data-linktype="absolute-path">IConnectionTimeoutFeature</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminrequestbodydataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinRequestBodyDataRateFeature</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminresponsedataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinResponseDataRateFeature</a></li>
+</ul>
+<h2 id="additional-resources">Additional resources</h2>
+<p><a name="endpoint-configuration"></a></p>
+<ul>
+<li><a href="kestrel/endpoints?view=aspnetcore-9.0" data-linktype="relative-path">Configure endpoints for the ASP.NET Core Kestrel web server</a></li>
+<li>Source for <a href="https://github.com/dotnet/aspnetcore/blob/v6.0.2/src/DefaultBuilder/src/WebHost.cs#L224" data-linktype="external"><code>WebApplication.CreateBuilder</code> method call to <code>UseKestrel</code></a>
+<a name="kestrel-options"></a></li>
+<li><a href="kestrel/options?view=aspnetcore-9.0" data-linktype="relative-path">Configure options for the ASP.NET Core Kestrel web server</a>
+<a name="http2-support"></a></li>
+<li><a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">Use HTTP/2 with the ASP.NET Core Kestrel web server</a>
+<a name="when-to-use-kestrel-with-a-reverse-proxy"></a></li>
+<li><a href="kestrel/when-to-use-a-reverse-proxy?view=aspnetcore-9.0" data-linktype="relative-path">When to use a reverse proxy with the ASP.NET Core Kestrel web server</a>
+<a name="host-filtering"></a></li>
+<li><a href="kestrel/host-filtering?view=aspnetcore-9.0" data-linktype="relative-path">Host filtering with ASP.NET Core Kestrel web server</a></li>
+<li><a href="../../test/troubleshoot?view=aspnetcore-9.0" data-linktype="relative-path">Troubleshoot and debug ASP.NET Core projects</a></li>
+<li><a href="../../security/enforcing-ssl?view=aspnetcore-9.0" data-linktype="relative-path">Enforce HTTPS in ASP.NET Core</a></li>
+<li><a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Configure ASP.NET Core to work with proxy servers and load balancers</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110#field.host" data-linktype="external">RFC 9110: HTTP Semantics (Section 7.2: Host and :authority)</a></li>
+<li>When using UNIX sockets on Linux, the socket isn't automatically deleted on app shutdown. For more information, see <a href="https://github.com/dotnet/aspnetcore/issues/14134" data-linktype="external">this GitHub issue</a>.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>As of ASP.NET Core 5.0, Kestrel's libuv transport is obsolete. The libuv transport doesn't receive updates to support new OS platforms, such as Windows ARM64, and will be removed in a future release. Remove any calls to the obsolete <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv" class="no-loc" data-linktype="absolute-path">UseLibuv</a> method and use Kestrel's default Socket transport instead.</p>
+</div>
+</div>
+<div data-moniker="aspnetcore-5.0">
+<p>Kestrel is a cross-platform <a href="./?view=aspnetcore-9.0" data-linktype="relative-path">web server for ASP.NET Core</a>. Kestrel is the web server that's included and enabled by default in ASP.NET Core project templates.</p>
+<p>Kestrel supports the following scenarios:</p>
+<ul>
+<li>HTTPS</li>
+<li><a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">HTTP/2</a> (except on macOS†)</li>
+<li>Opaque upgrade used to enable <a href="../websockets?view=aspnetcore-9.0" data-linktype="relative-path">WebSockets</a></li>
+<li>Unix sockets for high performance behind Nginx</li>
+</ul>
+<p>†HTTP/2 will be supported on macOS in a future release.</p>
+<p>Kestrel is supported on all platforms and versions that .NET Core supports.</p>
+<p><a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/5.x" data-linktype="external">View or download sample code</a> (<a href="../../introduction-to-aspnet-core?view=aspnetcore-9.0#how-to-download-a-sample" data-linktype="relative-path">how to download</a>)</p>
+<h2 id="get-started-1">Get started</h2>
+<p>ASP.NET Core project templates use Kestrel by default when not hosted with IIS. In <code>Program.cs</code>, the <a href="/en-us/dotnet/api/microsoft.extensions.hosting.generichostbuilderextensions.configurewebhostdefaults" class="no-loc" data-linktype="absolute-path">ConfigureWebHostDefaults</a> method calls <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel" class="no-loc" data-linktype="absolute-path">UseKestrel</a>:</p>
+<pre><code class="lang-csharp" highlight-lines="8">public static void Main(string[] args)
+{
+    CreateHostBuilder(args).Build().Run();
+}
+
+public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.UseStartup&lt;Startup&gt;();
+        });
+</code></pre>
+<p>For more information on building the host, see the <em>Set up a host</em> and <em>Default builder settings</em> sections of <a href="../host/generic-host?view=aspnetcore-9.0#set-up-a-host" data-linktype="relative-path">.NET Generic Host in ASP.NET Core</a>.</p>
+<h2 id="optional-client-certificates-1">Optional client certificates</h2>
+<p>For information on apps that must protect a subset of the app with a certificate, see <a href="../../security/authentication/certauth?view=aspnetcore-9.0#optional-client-certificates" data-linktype="relative-path">Optional client certificates</a>.</p>
+<h2 id="additional-resources-1">Additional resources</h2>
+<p><a name="endpoint-configuration"></a></p>
+<ul>
+<li><a href="kestrel/endpoints?view=aspnetcore-9.0" data-linktype="relative-path">Configure endpoints for the ASP.NET Core Kestrel web server</a>
+<a name="kestrel-options"></a></li>
+<li><a href="kestrel/options?view=aspnetcore-9.0" data-linktype="relative-path">Configure options for the ASP.NET Core Kestrel web server</a>
+<a name="http2-support"></a></li>
+<li><a href="kestrel/http2?view=aspnetcore-9.0" data-linktype="relative-path">Use HTTP/2 with the ASP.NET Core Kestrel web server</a>
+<a name="when-to-use-kestrel-with-a-reverse-proxy"></a></li>
+<li><a href="kestrel/when-to-use-a-reverse-proxy?view=aspnetcore-9.0" data-linktype="relative-path">When to use a reverse proxy with the ASP.NET Core Kestrel web server</a>
+<a name="host-filtering"></a></li>
+<li><a href="kestrel/host-filtering?view=aspnetcore-9.0" data-linktype="relative-path">Host filtering with ASP.NET Core Kestrel web server</a></li>
+<li><a href="../../test/troubleshoot?view=aspnetcore-9.0" data-linktype="relative-path">Troubleshoot and debug ASP.NET Core projects</a></li>
+<li><a href="../../security/enforcing-ssl?view=aspnetcore-9.0" data-linktype="relative-path">Enforce HTTPS in ASP.NET Core</a></li>
+<li><a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Configure ASP.NET Core to work with proxy servers and load balancers</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110#field.host" data-linktype="external">RFC 9110: HTTP Semantics (Section 7.2: Host and :authority)</a></li>
+<li>When using UNIX sockets on Linux, the socket is not automatically deleted on app shut down. For more information, see <a href="https://github.com/dotnet/aspnetcore/issues/14134" data-linktype="external">this GitHub issue</a>.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>As of ASP.NET Core 5.0, Kestrel's libuv transport is obsolete. The libuv transport doesn't receive updates to support new OS platforms, such as Windows ARM64, and will be removed in a future release. Remove any calls to the obsolete <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv" class="no-loc" data-linktype="absolute-path">UseLibuv</a> method and use Kestrel's default Socket transport instead.</p>
+</div>
+</div>
+<div data-moniker="aspnetcore-3.1">
+<p>Kestrel is a cross-platform <a href="./?view=aspnetcore-9.0" data-linktype="relative-path">web server for ASP.NET Core</a>. Kestrel is the web server that's included by default in ASP.NET Core project templates.</p>
+<p>Kestrel supports the following scenarios:</p>
+<ul>
+<li>HTTPS</li>
+<li>Opaque upgrade used to enable <a href="https://github.com/aspnet/websockets" data-linktype="external">WebSockets</a></li>
+<li>Unix sockets for high performance behind Nginx</li>
+<li>HTTP/2 (except on macOS†)</li>
+</ul>
+<p>†HTTP/2 will be supported on macOS in a future release.</p>
+<p>Kestrel is supported on all platforms and versions that .NET Core supports.</p>
+<p><a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/3.x" data-linktype="external">View or download sample code</a> (<a href="../../introduction-to-aspnet-core?view=aspnetcore-9.0#how-to-download-a-sample" data-linktype="relative-path">how to download</a>)</p>
+<h2 id="http2-support">HTTP/2 support</h2>
+<p><a href="https://httpwg.org/specs/rfc7540.html" data-linktype="external">HTTP/2</a> is available for ASP.NET Core apps if the following base requirements are met:</p>
+<ul>
+<li>Operating system†
+<ul>
+<li>Windows Server 2016/Windows 10 or later‡</li>
+<li>Linux with OpenSSL 1.0.2 or later (for example, Ubuntu 16.04 or later)</li>
+</ul>
+</li>
+<li>Target framework: .NET Core 2.2 or later</li>
+<li><a href="https://tools.ietf.org/html/rfc7301#section-3" data-linktype="external">Application-Layer Protocol Negotiation (ALPN)</a> connection</li>
+<li>TLS 1.2 or later connection</li>
+</ul>
+<p>†HTTP/2 will be supported on macOS in a future release.
+‡Kestrel has limited support for HTTP/2 on Windows Server 2012 R2 and Windows 8.1. Support is limited because the list of supported TLS cipher suites available on these operating systems is limited. A certificate generated using an Elliptic Curve Digital Signature Algorithm (ECDSA) may be required to secure TLS connections.</p>
+<p>If an HTTP/2 connection is established, <a href="/en-us/dotnet/api/microsoft.aspnetcore.http.httprequest.protocol" class="no-loc" data-linktype="absolute-path">HttpRequest.Protocol</a> reports <code>HTTP/2</code>.</p>
+<p>Starting with .NET Core 3.0, HTTP/2 is enabled by default. For more information on configuration, see the <a href="#kestrel-options" data-linktype="self-bookmark">Kestrel options</a> and <a href="#listenoptionsprotocols" data-linktype="self-bookmark">ListenOptions.Protocols</a> sections.</p>
+<h2 id="when-to-use-kestrel-with-a-reverse-proxy">When to use Kestrel with a reverse proxy</h2>
+<p>Kestrel can be used by itself or with a <em>reverse proxy server</em>. A reverse proxy server receives HTTP requests from the network and forwards them to Kestrel. Examples of a reverse proxy server include:</p>
+<ul>
+<li><a href="https://www.iis.net/" data-linktype="external">Internet Information Services (IIS)</a></li>
+<li><a href="https://nginx.org" data-linktype="external">Nginx</a></li>
+<li><a href="https://httpd.apache.org/" data-linktype="external">Apache</a></li>
+<li><a href="https://dotnet.github.io/yarp/" data-linktype="external">YARP: Yet Another Reverse Proxy</a></li>
+</ul>
+<p>Kestrel used as an edge (Internet-facing) web server:</p>
+<p><span class="mx-imgBorder">
+<img src="kestrel/_static/kestrel-to-internet2.png?view=aspnetcore-9.0" alt="Kestrel communicates directly with the Internet without a reverse proxy server" data-linktype="relative-path">
+</span>
+</p>
+<p>Kestrel used in a reverse proxy configuration:</p>
+<p><span class="mx-imgBorder">
+<img src="kestrel/_static/kestrel-to-internet.png?view=aspnetcore-9.0" alt="Kestrel communicates indirectly with the Internet through a reverse proxy server, such as IIS, Nginx, or Apache" data-linktype="relative-path">
+</span>
+</p>
+<p>Either configuration, with or without a reverse proxy server, is a supported hosting configuration.</p>
+<p>Kestrel used as an edge server without a reverse proxy server doesn't support sharing the same IP and port among multiple processes. When Kestrel is configured to listen on a port, Kestrel handles all of the traffic for that port regardless of requests' <code>Host</code> headers. A reverse proxy that can share ports has the ability to forward requests to Kestrel on a unique IP and port.</p>
+<p>Even if a reverse proxy server isn't required, using a reverse proxy server might be a good choice.</p>
+<p>A reverse proxy:</p>
+<ul>
+<li>Can limit the exposed public surface area of the apps that it hosts.</li>
+<li>Provide an additional layer of configuration and defense-in-depth cybersecurity.</li>
+<li>Might integrate better with existing infrastructure.</li>
+<li>Simplify load balancing and secure communication (HTTPS) configuration. Only the reverse proxy server requires an X.509 certificate, and that server can communicate with the app's servers on the internal network using plain HTTP.</li>
+</ul>
+<div class="WARNING">
+<p>Warning</p>
+<p>Hosting in a reverse proxy configuration requires <a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Forwarded Headers Middleware configuration</a>.</p>
+</div>
+<h2 id="kestrel-in-aspnet-core-apps">Kestrel in ASP.NET Core apps</h2>
+<p>ASP.NET Core project templates use Kestrel by default. In <code>Program.cs</code>, the <a href="/en-us/dotnet/api/microsoft.extensions.hosting.generichostbuilderextensions.configurewebhostdefaults" class="no-loc" data-linktype="absolute-path">ConfigureWebHostDefaults</a> method calls <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel" class="no-loc" data-linktype="absolute-path">UseKestrel</a>:</p>
+<pre><code class="lang-csharp" highlight-lines="8">public static void Main(string[] args)
+{
+    CreateHostBuilder(args).Build().Run();
+}
+
+public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.UseStartup&lt;Startup&gt;();
+        });
+</code></pre>
+<p>For more information on building the host, see the <em>Set up a host</em> and <em>Default builder settings</em> sections of <a href="../host/generic-host?view=aspnetcore-9.0#set-up-a-host" data-linktype="relative-path">.NET Generic Host in ASP.NET Core</a>.</p>
+<p>To provide additional configuration after calling <code>ConfigureWebHostDefaults</code>, use <code>ConfigureKestrel</code>:</p>
+<pre><code class="lang-csharp">public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.ConfigureKestrel(serverOptions =&gt;
+            {
+                // Set properties and call methods on options
+            })
+            .UseStartup&lt;Startup&gt;();
+        });
+</code></pre>
+<h2 id="kestrel-options">Kestrel options</h2>
+<p>The Kestrel web server has constraint configuration options that are especially useful in Internet-facing deployments.</p>
+<p>Set constraints on the <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.limits#microsoft-aspnetcore-server-kestrel-core-kestrelserveroptions-limits" class="no-loc" data-linktype="absolute-path">Limits</a> property of the <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions" class="no-loc" data-linktype="absolute-path">KestrelServerOptions</a> class. The <code>Limits</code> property holds an instance of the <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits" class="no-loc" data-linktype="absolute-path">KestrelServerLimits</a> class.</p>
+<p>The following examples use the <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core" class="no-loc" data-linktype="absolute-path">Microsoft.AspNetCore.Server.Kestrel.Core</a> namespace:</p>
+<pre><code class="lang-csharp">using Microsoft.AspNetCore.Server.Kestrel.Core;
+</code></pre>
+<p>In examples shown later in this article, Kestrel options are configured in C# code. Kestrel options can also be set using a <a href="../configuration/?view=aspnetcore-9.0" data-linktype="relative-path">configuration provider</a>. For example, the <a href="../configuration/?view=aspnetcore-9.0#file-configuration-provider" data-linktype="relative-path">File Configuration Provider</a> can load Kestrel configuration from an <code>appsettings.json</code> or <code>appsettings.{Environment}.json</code> file:</p>
+<pre><code class="lang-json">{
+  "Kestrel": {
+    "Limits": {
+      "MaxConcurrentConnections": 100,
+      "MaxConcurrentUpgradedConnections": 100
+    },
+    "DisableStringReuse": true
+  }
+}
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions" class="no-loc" data-linktype="absolute-path">KestrelServerOptions</a> and <a href="#endpoint-configuration" data-linktype="self-bookmark">endpoint configuration</a> are configurable from configuration providers. Remaining Kestrel configuration must be configured in C# code.</p>
+</div>
+<p>Use <strong>one</strong> of the following approaches:</p>
+<ul>
+<li><p>Configure Kestrel in <code>Startup.ConfigureServices</code>:</p>
+<ol>
+<li><p>Inject an instance of <code>IConfiguration</code> into the <code>Startup</code> class. The following example assumes that the injected configuration is assigned to the <code>Configuration</code> property.</p>
+</li>
+<li><p>In <code>Startup.ConfigureServices</code>, load the <code>Kestrel</code> section of configuration into Kestrel's configuration:</p>
+<pre><code class="lang-csharp">using Microsoft.Extensions.Configuration
+
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure&lt;KestrelServerOptions&gt;(
+            Configuration.GetSection("Kestrel"));
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        ...
+    }
+}
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>Configure Kestrel when building the host:</p>
+<p>In <code>Program.cs</code>, load the <code>Kestrel</code> section of configuration into Kestrel's configuration:</p>
+<pre><code class="lang-csharp">// using Microsoft.Extensions.DependencyInjection;
+
+public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureServices((context, services) =&gt;
+        {
+            services.Configure&lt;KestrelServerOptions&gt;(
+                context.Configuration.GetSection("Kestrel"));
+        })
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.UseStartup&lt;Startup&gt;();
+        });
+</code></pre>
+</li>
+</ul>
+<p>Both of the preceding approaches work with any <a href="../configuration/?view=aspnetcore-9.0" data-linktype="relative-path">configuration provider</a>.</p>
+<h3 id="keep-alive-timeout">Keep-alive timeout</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.keepalivetimeout#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-keepalivetimeout" class="no-loc" data-linktype="absolute-path">KeepAliveTimeout</a></p>
+<p>Gets or sets the <a href="https://www.rfc-editor.org/rfc/rfc9112.html#name-keep-alive-connections" data-linktype="external">keep-alive timeout</a>. Defaults to 2 minutes.</p>
+<pre><code class="lang-csharp" highlight-lines="19-20">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<h3 id="maximum-client-connections">Maximum client connections</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxconcurrentconnections#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-maxconcurrentconnections" class="no-loc" data-linktype="absolute-path">MaxConcurrentConnections</a>
+<a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxconcurrentupgradedconnections#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-maxconcurrentupgradedconnections" class="no-loc" data-linktype="absolute-path">MaxConcurrentUpgradedConnections</a></p>
+<p>The maximum number of concurrent open TCP connections can be set for the entire app with the following code:</p>
+<pre><code class="lang-csharp" highlight-lines="3">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<p>There's a separate limit for connections that have been upgraded from HTTP or HTTPS to another protocol (for example, on a WebSockets request). After a connection is upgraded, it isn't counted against the <code>MaxConcurrentConnections</code> limit.</p>
+<pre><code class="lang-csharp" highlight-lines="4">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<p>The maximum number of connections is unlimited (null) by default.</p>
+<h3 id="maximum-request-body-size">Maximum request body size</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-maxrequestbodysize" class="no-loc" data-linktype="absolute-path">MaxRequestBodySize</a></p>
+<p>The default maximum request body size is 30,000,000 bytes, which is approximately 28.6 MB.</p>
+<p>The recommended approach to override the limit in an ASP.NET Core MVC app is to use the <a href="/en-us/dotnet/api/microsoft.aspnetcore.mvc.requestsizelimitattribute" class="no-loc" data-linktype="absolute-path">RequestSizeLimitAttribute</a> attribute on an action method:</p>
+<pre><code class="lang-csharp">[RequestSizeLimit(100000000)]
+public IActionResult MyActionMethod()
+</code></pre>
+<p>Here's an example that shows how to configure the constraint for the app on every request:</p>
+<pre><code class="lang-csharp" highlight-lines="5">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<p>Override the setting on a specific request in middleware:</p>
+<pre><code class="lang-csharp" highlight-lines="3-4">app.Run(async (context) =&gt;
+{
+    context.Features.Get&lt;IHttpMaxRequestBodySizeFeature&gt;()
+        .MaxRequestBodySize = 10 * 1024;
+
+    var minRequestRateFeature = 
+        context.Features.Get&lt;IHttpMinRequestBodyDataRateFeature&gt;();
+    var minResponseRateFeature = 
+        context.Features.Get&lt;IHttpMinResponseDataRateFeature&gt;();
+
+    if (minRequestRateFeature != null)
+    {
+        minRequestRateFeature.MinDataRate = new MinDataRate(
+            bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+    }
+
+    if (minResponseRateFeature != null)
+    {
+        minResponseRateFeature.MinDataRate = new MinDataRate(
+            bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+    }
+</code></pre>
+<p>An exception is thrown if the app configures the limit on a request after the app has started to read the request. There's an <code>IsReadOnly</code> property that indicates if the <code>MaxRequestBodySize</code> property is in read-only state, meaning it's too late to configure the limit.</p>
+<p>When an app is run <a href="../../host-and-deploy/iis/?view=aspnetcore-9.0#out-of-process-hosting-model" data-linktype="relative-path">out-of-process</a> behind the <a href="../../host-and-deploy/aspnet-core-module?view=aspnetcore-9.0" data-linktype="relative-path">ASP.NET Core Module</a>, Kestrel's request body size limit is disabled because IIS already sets the limit.</p>
+<h3 id="minimum-request-body-data-rate">Minimum request body data rate</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minrequestbodydatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minrequestbodydatarate" class="no-loc" data-linktype="absolute-path">MinRequestBodyDataRate</a>
+<a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.minresponsedatarate#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-minresponsedatarate" class="no-loc" data-linktype="absolute-path">MinResponseDataRate</a></p>
+<p>Kestrel checks every second if data is arriving at the specified rate in bytes/second. If the rate drops below the minimum, the connection is timed out. The grace period is the amount of time that Kestrel gives the client to increase its send rate up to the minimum; the rate isn't checked during that time. The grace period helps avoid dropping connections that are initially sending data at a slow rate due to TCP slow-start.</p>
+<p>The default minimum rate is 240 bytes/second with a 5 second grace period.</p>
+<p>A minimum rate also applies to the response. The code to set the request limit and the response limit is the same except for having <code>RequestBody</code> or <code>Response</code> in the property and interface names.</p>
+<p>Here's an example that shows how to configure the minimum data rates in <code>Program.cs</code>:</p>
+<pre><code class="lang-csharp" highlight-lines="6-11">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<p>Override the minimum rate limits per request in middleware:</p>
+<pre><code class="lang-csharp" highlight-lines="6-21">app.Run(async (context) =&gt;
+{
+    context.Features.Get&lt;IHttpMaxRequestBodySizeFeature&gt;()
+        .MaxRequestBodySize = 10 * 1024;
+
+    var minRequestRateFeature = 
+        context.Features.Get&lt;IHttpMinRequestBodyDataRateFeature&gt;();
+    var minResponseRateFeature = 
+        context.Features.Get&lt;IHttpMinResponseDataRateFeature&gt;();
+
+    if (minRequestRateFeature != null)
+    {
+        minRequestRateFeature.MinDataRate = new MinDataRate(
+            bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+    }
+
+    if (minResponseRateFeature != null)
+    {
+        minResponseRateFeature.MinDataRate = new MinDataRate(
+            bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+    }
+</code></pre>
+<p>The <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminresponsedataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinResponseDataRateFeature</a> referenced in the prior sample is not present in <code>HttpContext.Features</code> for HTTP/2 requests because modifying rate limits on a per-request basis is generally not supported for HTTP/2 due to the protocol's support for request multiplexing. However, the <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.features.ihttpminrequestbodydataratefeature" class="no-loc" data-linktype="absolute-path">IHttpMinRequestBodyDataRateFeature</a> is still present <code>HttpContext.Features</code> for HTTP/2 requests, because the read rate limit can still be <em>disabled entirely</em> on a per-request basis by setting <code>IHttpMinRequestBodyDataRateFeature.MinDataRate</code> to <code>null</code> even for an HTTP/2 request. Attempting to read <code>IHttpMinRequestBodyDataRateFeature.MinDataRate</code> or attempting to set it to a value other than <code>null</code> will result in a <code>NotSupportedException</code> being thrown given an HTTP/2 request.</p>
+<p>Server-wide rate limits configured via <code>KestrelServerOptions.Limits</code> still apply to both HTTP/1.x and HTTP/2 connections.</p>
+<h3 id="request-headers-timeout">Request headers timeout</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.requestheaderstimeout#microsoft-aspnetcore-server-kestrel-core-kestrelserverlimits-requestheaderstimeout" class="no-loc" data-linktype="absolute-path">RequestHeadersTimeout</a></p>
+<p>Gets or sets the maximum amount of time the server spends receiving request headers. Defaults to 30 seconds.</p>
+<pre><code class="lang-csharp" highlight-lines="21-22">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.MaxConcurrentConnections = 100;
+    serverOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+    serverOptions.Limits.MaxRequestBodySize = 10 * 1024;
+    serverOptions.Limits.MinRequestBodyDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Limits.MinResponseDataRate =
+        new MinDataRate(bytesPerSecond: 100, 
+            gracePeriod: TimeSpan.FromSeconds(10));
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5001, 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testPassword");
+        });
+    serverOptions.Limits.KeepAliveTimeout = 
+        TimeSpan.FromMinutes(2);
+    serverOptions.Limits.RequestHeadersTimeout = 
+        TimeSpan.FromMinutes(1);
+})
+</code></pre>
+<h3 id="maximum-streams-per-connection">Maximum streams per connection</h3>
+<p><code>Http2.MaxStreamsPerConnection</code> limits the number of concurrent request streams per HTTP/2 connection. Excess streams are refused.</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.MaxStreamsPerConnection = 100;
+});
+</code></pre>
+<p>The default value is 100.</p>
+<h3 id="header-table-size">Header table size</h3>
+<p>The HPACK decoder decompresses HTTP headers for HTTP/2 connections. <code>Http2.HeaderTableSize</code> limits the size of the header compression table that the HPACK decoder uses. The value is provided in octets and must be greater than zero (0).</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.HeaderTableSize = 4096;
+});
+</code></pre>
+<p>The default value is 4096.</p>
+<h3 id="maximum-frame-size">Maximum frame size</h3>
+<p><code>Http2.MaxFrameSize</code> indicates the maximum allowed size of an HTTP/2 connection frame payload received or sent by the server. The value is provided in octets and must be between 2^14 (16,384) and 2^24-1 (16,777,215).</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.MaxFrameSize = 16384;
+});
+</code></pre>
+<p>The default value is 2^14 (16,384).</p>
+<h3 id="maximum-request-header-size">Maximum request header size</h3>
+<p><code>Http2.MaxRequestHeaderFieldSize</code> indicates the maximum allowed size in octets of request header values. This limit applies to both name and value in their compressed and uncompressed representations. The value must be greater than zero (0).</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.MaxRequestHeaderFieldSize = 8192;
+});
+</code></pre>
+<p>The default value is 8,192.</p>
+<h3 id="initial-connection-window-size">Initial connection window size</h3>
+<p><code>Http2.InitialConnectionWindowSize</code> indicates the maximum request body data in bytes the server buffers at one time aggregated across all requests (streams) per connection. Requests are also limited by <code>Http2.InitialStreamWindowSize</code>. The value must be greater than or equal to 65,535 and less than 2^31 (2,147,483,648).</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.InitialConnectionWindowSize = 131072;
+});
+</code></pre>
+<p>The default value is 128 KB (131,072).</p>
+<h3 id="initial-stream-window-size">Initial stream window size</h3>
+<p><code>Http2.InitialStreamWindowSize</code> indicates the maximum request body data in bytes the server buffers at one time per request (stream). Requests are also limited by <code>Http2.InitialConnectionWindowSize</code>. The value must be greater than or equal to 65,535 and less than 2^31 (2,147,483,648).</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Limits.Http2.InitialStreamWindowSize = 98304;
+});
+</code></pre>
+<p>The default value is 96 KB (98,304).</p>
+<h3 id="trailers">Trailers</h3>
+<p>HTTP Trailers are similar to HTTP Headers, except they are sent after the response body is sent. For IIS and HTTP.sys, only HTTP/2 response trailers are supported.</p>
+<pre><code class="lang-csharp">if (httpContext.Response.SupportsTrailers())
+{
+    httpContext.Response.DeclareTrailer("trailername");	
+
+    // Write body
+    httpContext.Response.WriteAsync("Hello world");
+
+    httpContext.Response.AppendTrailer("trailername", "TrailerValue");
+}
+</code></pre>
+<p>In the preceding example code:</p>
+<ul>
+<li><code>SupportsTrailers</code> ensures that trailers are supported for the response.</li>
+<li><code>DeclareTrailer</code> adds the given trailer name to the <code>Trailer</code> response header. Declaring a response's trailers is optional, but recommended. If <code>DeclareTrailer</code> is called, it must be before the response headers are sent.</li>
+<li><code>AppendTrailer</code> appends the trailer.</li>
+</ul>
+<h3 id="reset">Reset</h3>
+<p>Reset allows for the server to reset a HTTP/2 request with a specified error code. A reset request is considered aborted.</p>
+<pre><code class="lang-csharp">var resetFeature = httpContext.Features.Get&lt;IHttpResetFeature&gt;();
+resetFeature.Reset(errorCode: 2);
+</code></pre>
+<p><code>Reset</code> in the preceding code example specifies the <code>INTERNAL_ERROR</code> error code. For more information about HTTP/2 error codes, visit the <a href="https://tools.ietf.org/html/rfc7540#page-50" data-linktype="external">HTTP/2 specification error code section</a>.</p>
+<h3 id="synchronous-io">Synchronous I/O</h3>
+<p><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.allowsynchronousio#microsoft-aspnetcore-server-kestrel-core-kestrelserveroptions-allowsynchronousio" class="no-loc" data-linktype="absolute-path">AllowSynchronousIO</a> controls whether synchronous I/O is allowed for the request and response. The default value is <code>false</code>.</p>
+<div class="WARNING">
+<p>Warning</p>
+<p>A large number of blocking synchronous I/O operations can lead to thread pool starvation, which makes the app unresponsive. Only enable <code>AllowSynchronousIO</code> when using a library that doesn't support asynchronous I/O.</p>
+</div>
+<p>The following example enables synchronous I/O:</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.AllowSynchronousIO = true;
+})
+</code></pre>
+<p>For information about other Kestrel options and limits, see:</p>
+<ul>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions" class="no-loc" data-linktype="absolute-path">KestrelServerOptions</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits" class="no-loc" data-linktype="absolute-path">KestrelServerLimits</a></li>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.listenoptions" class="no-loc" data-linktype="absolute-path">ListenOptions</a></li>
+</ul>
+<h2 id="endpoint-configuration">Endpoint configuration</h2>
+<p>By default, ASP.NET Core binds to:</p>
+<ul>
+<li><code>http://localhost:5000</code></li>
+<li><code>https://localhost:5001</code> (when a local development certificate is present)</li>
+</ul>
+<p>Specify URLs using the:</p>
+<ul>
+<li><code>ASPNETCORE_URLS</code> environment variable.</li>
+<li><code>--urls</code> command-line argument.</li>
+<li><code>urls</code> host configuration key.</li>
+<li><code>UseUrls</code> extension method.</li>
+</ul>
+<p>The value provided using these approaches can be one or more HTTP and HTTPS endpoints (HTTPS if a default cert is available). Configure the value as a semicolon-separated list (for example, <code>"Urls": "http://localhost:8000;http://localhost:8001"</code>).</p>
+<p>For more information on these approaches, see <a href="../host/web-host?view=aspnetcore-9.0#server-urls" data-linktype="relative-path">Server URLs</a> and <a href="../host/web-host?view=aspnetcore-9.0#override-configuration" data-linktype="relative-path">Override configuration</a>.</p>
+<p>A development certificate is created:</p>
+<ul>
+<li>When the <a href="/en-us/dotnet/core/sdk" data-linktype="absolute-path">.NET Core SDK</a> is installed.</li>
+<li>The <a href="/en-us/dotnet/core/tools/dotnet-dev-certs" data-linktype="absolute-path">dev-certs tool</a> is used to create a certificate.</li>
+</ul>
+<p>Some browsers require granting explicit permission to trust the local development certificate.</p>
+<p>Project templates configure apps to run on HTTPS by default and include <a href="../../security/enforcing-ssl?view=aspnetcore-9.0" data-linktype="relative-path">HTTPS redirection and HSTS support</a>.</p>
+<p>Call <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen" class="no-loc" data-linktype="absolute-path">Listen</a> or <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket" class="no-loc" data-linktype="absolute-path">ListenUnixSocket</a> methods on <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions" class="no-loc" data-linktype="absolute-path">KestrelServerOptions</a> to configure URL prefixes and ports for Kestrel.</p>
+<p><code>UseUrls</code>, the <code>--urls</code> command-line argument, <code>urls</code> host configuration key, and the <code>ASPNETCORE_URLS</code> environment variable also work but have the limitations noted later in this section (a default certificate must be available for HTTPS endpoint configuration).</p>
+<p><code>KestrelServerOptions</code> configuration:</p>
+<h3 id="configureendpointdefaultsactionlistenoptions">ConfigureEndpointDefaults(Action&lt;ListenOptions&gt;)</h3>
+<p>Specifies a configuration <code>Action</code> to run for each specified endpoint. Calling <code>ConfigureEndpointDefaults</code> multiple times replaces prior <code>Action</code>s with the last <code>Action</code> specified.</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ConfigureEndpointDefaults(listenOptions =&gt;
+    {
+        // Configure endpoint defaults
+    });
+});
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>Endpoints created by calling <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen" class="no-loc" data-linktype="absolute-path">Listen</a> <strong>before</strong> calling <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.configureendpointdefaults" class="no-loc" data-linktype="absolute-path">ConfigureEndpointDefaults</a> won't have the defaults applied.</p>
+</div>
+<h3 id="configurehttpsdefaultsactionhttpsconnectionadapteroptions">ConfigureHttpsDefaults(Action&lt;HttpsConnectionAdapterOptions&gt;)</h3>
+<p>Specifies a configuration <code>Action</code> to run for each HTTPS endpoint. Calling <code>ConfigureHttpsDefaults</code> multiple times replaces prior <code>Action</code>s with the last <code>Action</code> specified.</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =&gt;
+    {
+        // certificate is an X509Certificate2
+        listenOptions.ServerCertificate = certificate;
+    });
+});
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>Endpoints created by calling <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen" class="no-loc" data-linktype="absolute-path">Listen</a> <strong>before</strong> calling <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.configurehttpsdefaults" class="no-loc" data-linktype="absolute-path">ConfigureHttpsDefaults</a> won't have the defaults applied.</p>
+</div>
+<h3 id="configureiconfiguration">Configure(IConfiguration)</h3>
+<p>Creates a configuration loader for setting up Kestrel that takes an <a href="/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration" class="no-loc" data-linktype="absolute-path">IConfiguration</a> as input. The configuration must be scoped to the configuration section for Kestrel.</p>
+<h3 id="listenoptionsusehttps">ListenOptions.UseHttps</h3>
+<p>Configure Kestrel to use HTTPS.</p>
+<p><code>ListenOptions.UseHttps</code> extensions:</p>
+<ul>
+<li><code>UseHttps</code>: Configure Kestrel to use HTTPS with the default certificate. Throws an exception if no default certificate is configured.</li>
+<li><code>UseHttps(string fileName)</code></li>
+<li><code>UseHttps(string fileName, string password)</code></li>
+<li><code>UseHttps(string fileName, string password, Action&lt;HttpsConnectionAdapterOptions&gt; configureOptions)</code></li>
+<li><code>UseHttps(StoreName storeName, string subject)</code></li>
+<li><code>UseHttps(StoreName storeName, string subject, bool allowInvalid)</code></li>
+<li><code>UseHttps(StoreName storeName, string subject, bool allowInvalid, StoreLocation location)</code></li>
+<li><code>UseHttps(StoreName storeName, string subject, bool allowInvalid, StoreLocation location, Action&lt;HttpsConnectionAdapterOptions&gt; configureOptions)</code></li>
+<li><code>UseHttps(X509Certificate2 serverCertificate)</code></li>
+<li><code>UseHttps(X509Certificate2 serverCertificate, Action&lt;HttpsConnectionAdapterOptions&gt; configureOptions)</code></li>
+<li><code>UseHttps(Action&lt;HttpsConnectionAdapterOptions&gt; configureOptions)</code></li>
+</ul>
+<p><code>ListenOptions.UseHttps</code> parameters:</p>
+<ul>
+<li><code>filename</code> is the path and file name of a certificate file, relative to the directory that contains the app's content files.</li>
+<li><code>password</code> is the password required to access the X.509 certificate data.</li>
+<li><code>configureOptions</code> is an <code>Action</code> to configure the <code>HttpsConnectionAdapterOptions</code>. Returns the <code>ListenOptions</code>.</li>
+<li><code>storeName</code> is the certificate store from which to load the certificate.</li>
+<li><code>subject</code> is the subject name for the certificate.</li>
+<li><code>allowInvalid</code> indicates if invalid certificates should be considered, such as self-signed certificates.</li>
+<li><code>location</code> is the store location to load the certificate from.</li>
+<li><code>serverCertificate</code> is the X.509 certificate.</li>
+</ul>
+<p>In production, HTTPS must be explicitly configured. At a minimum, a default certificate must be provided.</p>
+<p>Supported configurations described next:</p>
+<ul>
+<li>No configuration</li>
+<li>Replace the default certificate from configuration</li>
+<li>Change the defaults in code</li>
+</ul>
+<p><em>No configuration</em></p>
+<p>Kestrel listens on <code>http://localhost:5000</code> and <code>https://localhost:5001</code> (if a default cert is available).</p>
+<p><a name="configuration"></a></p>
+<p><em>Replace the default certificate from configuration</em></p>
+<p><code>CreateDefaultBuilder</code> calls <code>Configure(context.Configuration.GetSection("Kestrel"))</code> by default to load Kestrel configuration. A default HTTPS app settings configuration schema is available for Kestrel. Configure multiple endpoints, including the URLs and the certificates to use, either from a file on disk or from a certificate store.</p>
+<p>In the following <code>appsettings.json</code> example:</p>
+<ul>
+<li>Set <strong>AllowInvalid</strong> to <code>true</code> to permit the use of invalid certificates (for example, self-signed certificates).</li>
+<li>Any HTTPS endpoint that doesn't specify a certificate (<strong>HttpsDefaultCert</strong> in the example that follows) falls back to the cert defined under <strong>Certificates</strong> &gt; <strong>Default</strong> or the development certificate.</li>
+</ul>
+<pre><code class="lang-json">{
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://localhost:5000"
+      },
+      "HttpsInlineCertFile": {
+        "Url": "https://localhost:5001",
+        "Certificate": {
+          "Path": "&lt;path to .pfx file&gt;",
+          "Password": "&lt;certificate password&gt;"
+        }
+      },
+      "HttpsInlineCertStore": {
+        "Url": "https://localhost:5002",
+        "Certificate": {
+          "Subject": "&lt;subject; required&gt;",
+          "Store": "&lt;certificate store; required&gt;",
+          "Location": "&lt;location; defaults to CurrentUser&gt;",
+          "AllowInvalid": "&lt;true or false; defaults to false&gt;"
+        }
+      },
+      "HttpsDefaultCert": {
+        "Url": "https://localhost:5003"
+      },
+      "Https": {
+        "Url": "https://*:5004",
+        "Certificate": {
+          "Path": "&lt;path to .pfx file&gt;",
+          "Password": "&lt;certificate password&gt;"
+        }
+      }
+    },
+    "Certificates": {
+      "Default": {
+        "Path": "&lt;path to .pfx file&gt;",
+        "Password": "&lt;certificate password&gt;"
+      }
+    }
+  }
+}
+</code></pre>
+<p>An alternative to using <strong>Path</strong> and <strong>Password</strong> for any certificate node is to specify the certificate using certificate store fields. For example, the <strong>Certificates</strong> &gt; <strong>Default</strong> certificate can be specified as:</p>
+<pre><code class="lang-json">"Default": {
+  "Subject": "&lt;subject; required&gt;",
+  "Store": "&lt;cert store; required&gt;",
+  "Location": "&lt;location; defaults to CurrentUser&gt;",
+  "AllowInvalid": "&lt;true or false; defaults to false&gt;"
+}
+</code></pre>
+<p>Schema notes:</p>
+<ul>
+<li>Endpoints names are case-insensitive. For example, <code>HTTPS</code> and <code>Https</code> are valid.</li>
+<li>The <code>Url</code> parameter is required for each endpoint. The format for this parameter is the same as the top-level <code>Urls</code> configuration parameter except that it's limited to a single value.</li>
+<li>These endpoints replace those defined in the top-level <code>Urls</code> configuration rather than adding to them. Endpoints defined in code via <code>Listen</code> are cumulative with the endpoints defined in the configuration section.</li>
+<li>The <code>Certificate</code> section is optional. If the <code>Certificate</code> section isn't specified, the defaults defined in earlier scenarios are used. If no defaults are available, the server throws an exception and fails to start.</li>
+<li>The <code>Certificate</code> section supports both <strong>Path</strong>–<strong>Password</strong> and <strong>Subject</strong>–<strong>Store</strong> certificates.</li>
+<li>Any number of endpoints may be defined in this way so long as they don't cause port conflicts.</li>
+<li><code>options.Configure(context.Configuration.GetSection("{SECTION}"))</code> returns a <code>KestrelConfigurationLoader</code> with an <code>.Endpoint(string name, listenOptions =&gt; { })</code> method that can be used to supplement a configured endpoint's settings:</li>
+</ul>
+<pre><code class="lang-csharp">webBuilder.UseKestrel((context, serverOptions) =&gt;
+{
+    serverOptions.Configure(context.Configuration.GetSection("Kestrel"))
+        .Endpoint("HTTPS", listenOptions =&gt;
+        {
+            listenOptions.HttpsOptions.SslProtocols = SslProtocols.Tls12;
+        });
+});
+</code></pre>
+<p><code>KestrelServerOptions.ConfigurationLoader</code> can be directly accessed to continue iterating on the existing loader, such as the one provided by <a href="/en-us/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder" class="no-loc" data-linktype="absolute-path">CreateDefaultBuilder</a>.</p>
+<ul>
+<li>The configuration section for each endpoint is available on the options in the <code>Endpoint</code> method so that custom settings may be read.</li>
+<li>Multiple configurations may be loaded by calling <code>options.Configure(context.Configuration.GetSection("{SECTION}"))</code> again with another section. Only the last configuration is used, unless <code>Load</code> is explicitly called on prior instances. The metapackage doesn't call <code>Load</code> so that its default configuration section may be replaced.</li>
+<li><code>KestrelConfigurationLoader</code> mirrors the <code>Listen</code> family of APIs from <code>KestrelServerOptions</code> as <code>Endpoint</code> overloads, so code and config endpoints may be configured in the same place. These overloads don't use names and only consume default settings from configuration.</li>
+</ul>
+<p><em>Change the defaults in code</em></p>
+<p><code>ConfigureEndpointDefaults</code> and <code>ConfigureHttpsDefaults</code> can be used to change default settings for <code>ListenOptions</code> and <code>HttpsConnectionAdapterOptions</code>, including overriding the default certificate specified in the prior scenario. <code>ConfigureEndpointDefaults</code> and <code>ConfigureHttpsDefaults</code> should be called before any endpoints are configured.</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ConfigureEndpointDefaults(listenOptions =&gt;
+    {
+        // Configure endpoint defaults
+    });
+
+    serverOptions.ConfigureHttpsDefaults(listenOptions =&gt;
+    {
+        listenOptions.SslProtocols = SslProtocols.Tls12;
+    });
+});
+</code></pre>
+<p><em>Kestrel support for SNI</em></p>
+<p><a href="https://tools.ietf.org/html/rfc6066#section-3" data-linktype="external">Server Name Indication (SNI)</a> can be used to host multiple domains on the same IP address and port. For SNI to function, the client sends the host name for the secure session to the server during the TLS handshake so that the server can provide the correct certificate. The client uses the furnished certificate for encrypted communication with the server during the secure session that follows the TLS handshake.</p>
+<p>Kestrel supports SNI via the <code>ServerCertificateSelector</code> callback. The callback is invoked once per connection to allow the app to inspect the host name and select the appropriate certificate.</p>
+<p>SNI support requires:</p>
+<ul>
+<li>Running on target framework <code>netcoreapp2.1</code> or later. On <code>net461</code> or later, the callback is invoked but the <code>name</code> is always <code>null</code>. The <code>name</code> is also <code>null</code> if the client doesn't provide the host name parameter in the TLS handshake.</li>
+<li>All websites run on the same Kestrel instance. Kestrel doesn't support sharing an IP address and port across multiple instances without a reverse proxy.</li>
+</ul>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ListenAnyIP(5005, listenOptions =&gt;
+    {
+        listenOptions.UseHttps(httpsOptions =&gt;
+        {
+            var localhostCert = CertificateLoader.LoadFromStoreCert(
+                "localhost", "My", StoreLocation.CurrentUser,
+                allowInvalid: true);
+            var exampleCert = CertificateLoader.LoadFromStoreCert(
+                "example.com", "My", StoreLocation.CurrentUser,
+                allowInvalid: true);
+            var subExampleCert = CertificateLoader.LoadFromStoreCert(
+                "sub.example.com", "My", StoreLocation.CurrentUser,
+                allowInvalid: true);
+            var certs = new Dictionary&lt;string, X509Certificate2&gt;(
+                StringComparer.OrdinalIgnoreCase);
+            certs["localhost"] = localhostCert;
+            certs["example.com"] = exampleCert;
+            certs["sub.example.com"] = subExampleCert;
+
+            httpsOptions.ServerCertificateSelector = (connectionContext, name) =&gt;
+            {
+                if (name != null &amp;&amp; certs.TryGetValue(name, out var cert))
+                {
+                    return cert;
+                }
+
+                return exampleCert;
+            };
+        });
+    });
+});
+</code></pre>
+<h3 id="connection-logging">Connection logging</h3>
+<p>Call <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.listenoptionsconnectionloggingextensions.useconnectionlogging" class="no-loc" data-linktype="absolute-path">UseConnectionLogging</a> to emit Debug level logs for byte-level communication on a connection. Connection logging is helpful for troubleshooting problems in low-level communication, such as during TLS encryption and behind proxies. If <code>UseConnectionLogging</code> is placed before <code>UseHttps</code>, encrypted traffic is logged. If <code>UseConnectionLogging</code> is placed after <code>UseHttps</code>, decrypted traffic is logged.</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =&gt;
+    {
+        listenOptions.UseConnectionLogging();
+    });
+});
+</code></pre>
+<h3 id="bind-to-a-tcp-socket">Bind to a TCP socket</h3>
+<p>The <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listen" class="no-loc" data-linktype="absolute-path">Listen</a> method binds to a TCP socket, and an options lambda permits X.509 certificate configuration:</p>
+<pre><code class="lang-csharp" highlight-lines="12-18">public static void Main(string[] args)
+{
+    CreateHostBuilder(args).Build().Run();
+}
+
+public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =&gt;
+        {
+            webBuilder.ConfigureKestrel(serverOptions =&gt;
+            {
+                serverOptions.Listen(IPAddress.Loopback, 5000);
+                serverOptions.Listen(IPAddress.Loopback, 5001, 
+                    listenOptions =&gt;
+                    {
+                        listenOptions.UseHttps("testCert.pfx", 
+                            "testPassword");
+                    });
+            })
+            .UseStartup&lt;Startup&gt;();
+        });
+</code></pre>
+<p>The example configures HTTPS for an endpoint with <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.listenoptions" class="no-loc" data-linktype="absolute-path">ListenOptions</a>. Use the same API to configure other Kestrel settings for specific endpoints.</p>
+<p>On Windows, self-signed certificates can be created using the <a href="/en-us/powershell/module/pki/new-selfsignedcertificate" data-linktype="absolute-path"><code>New-SelfSignedCertificate</code> PowerShell cmdlet</a>. For an unsupported example, see <a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/includes/make-x509-cert/UpdateIISExpressSSLForChrome.ps1" data-linktype="external"><code>UpdateIISExpressSSLForChrome.ps1</code></a>.</p>
+<p>On macOS, Linux, and Windows, certificates can be created using <a href="https://www.openssl.org/" data-linktype="external">OpenSSL</a>.</p>
+<h3 id="bind-to-a-unix-socket">Bind to a Unix socket</h3>
+<p>Listen on a Unix socket with <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket" class="no-loc" data-linktype="absolute-path">ListenUnixSocket</a> for improved performance with Nginx, as shown in this example:</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ListenUnixSocket("/tmp/kestrel-test.sock");
+    serverOptions.ListenUnixSocket("/tmp/kestrel-test.sock", 
+        listenOptions =&gt;
+        {
+            listenOptions.UseHttps("testCert.pfx", 
+                "testpassword");
+        });
+})
+</code></pre>
+<ul>
+<li>In the Nginx configuration file, set the <code>server</code> &gt; <code>location</code> &gt; <code>proxy_pass</code> entry to <code>http://unix:/tmp/{KESTREL SOCKET}:/;</code>. <code>{KESTREL SOCKET}</code> is the name of the socket provided to <a href="/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket" class="no-loc" data-linktype="absolute-path">ListenUnixSocket</a> (for example, <code>kestrel-test.sock</code> in the preceding example).</li>
+<li>Ensure that the socket is writeable by Nginx (for example, <code>chmod go+w /tmp/kestrel-test.sock</code>).</li>
+</ul>
+<h3 id="port-0">Port 0</h3>
+<p>When the port number <code>0</code> is specified, Kestrel dynamically binds to an available port. The following example shows how to determine which port Kestrel actually bound at runtime:</p>
+<pre><code class="lang-csharp" highlight-lines="3-4,15-21">public void Configure(IApplicationBuilder app)
+{
+    var serverAddressesFeature = 
+        app.ServerFeatures.Get&lt;IServerAddressesFeature&gt;();
+
+    app.UseStaticFiles();
+
+    app.Run(async (context) =&gt;
+    {
+        context.Response.ContentType = "text/html";
+        await context.Response
+            .WriteAsync("&lt;!DOCTYPE html&gt;&lt;html lang=\"en\"&gt;&lt;head&gt;" +
+                "&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hosted by Kestrel&lt;/p&gt;");
+
+        if (serverAddressesFeature != null)
+        {
+            await context.Response
+                .WriteAsync("&lt;p&gt;Listening on the following addresses: " +
+                    string.Join(", ", serverAddressesFeature.Addresses) +
+                    "&lt;/p&gt;");
+        }
+
+        await context.Response.WriteAsync("&lt;p&gt;Request URL: " +
+            $"{context.Request.GetDisplayUrl()}&lt;p&gt;");
+    });
+}
+</code></pre>
+<p>When the app is run, the console window output indicates the dynamic port where the app can be reached:</p>
+<pre><code class="lang-console">Listening on the following addresses: http://127.0.0.1:48508
+</code></pre>
+<h3 id="limitations">Limitations</h3>
+<p>Configure endpoints with the following approaches:</p>
+<ul>
+<li><a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useurls" class="no-loc" data-linktype="absolute-path">UseUrls</a></li>
+<li><code>--urls</code> command-line argument</li>
+<li><code>urls</code> host configuration key</li>
+<li><code>ASPNETCORE_URLS</code> environment variable</li>
+</ul>
+<p>These methods are useful for making code work with servers other than Kestrel. However, be aware of the following limitations:</p>
+<ul>
+<li>HTTPS can't be used with these approaches unless a default certificate is provided in the HTTPS endpoint configuration (for example, using <code>KestrelServerOptions</code> configuration or a configuration file as shown earlier in this topic).</li>
+<li>When both the <code>Listen</code> and <code>UseUrls</code> approaches are used simultaneously, the <code>Listen</code> endpoints override the <code>UseUrls</code> endpoints.</li>
+</ul>
+<h3 id="iis-endpoint-configuration">IIS endpoint configuration</h3>
+<p>When using IIS, the URL bindings for IIS override bindings are set by either <code>Listen</code> or <code>UseUrls</code>. For more information, see the <a href="../../host-and-deploy/aspnet-core-module?view=aspnetcore-9.0" data-linktype="relative-path">ASP.NET Core Module</a> topic.</p>
+<h3 id="listenoptionsprotocols">ListenOptions.Protocols</h3>
+<p>The <code>Protocols</code> property establishes the HTTP protocols (<code>HttpProtocols</code>) enabled on a connection endpoint or for the server. Assign a value to the <code>Protocols</code> property from the <code>HttpProtocols</code> enum.</p>
+<table>
+<thead>
+<tr>
+<th><code>HttpProtocols</code> enum value</th>
+<th>Connection protocol permitted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Http1</code></td>
+<td>HTTP/1.1 only. Can be used with or without TLS.</td>
+</tr>
+<tr>
+<td><code>Http2</code></td>
+<td>HTTP/2 only. May be used without TLS only if the client supports a <a href="https://tools.ietf.org/html/rfc7540#section-3.4" data-linktype="external">Prior Knowledge mode</a>.</td>
+</tr>
+<tr>
+<td><code>Http1AndHttp2</code></td>
+<td>HTTP/1.1 and HTTP/2. HTTP/2 requires the client to select HTTP/2 in the TLS <a href="https://tools.ietf.org/html/rfc7301#section-3" data-linktype="external">Application-Layer Protocol Negotiation (ALPN)</a> handshake; otherwise, the connection defaults to HTTP/1.1.</td>
+</tr>
+</tbody>
+</table>
+<p>The default <code>ListenOptions.Protocols</code> value for any endpoint is <code>HttpProtocols.Http1AndHttp2</code>.</p>
+<p>TLS restrictions for HTTP/2:</p>
+<ul>
+<li>TLS version 1.2 or later</li>
+<li>Renegotiation disabled</li>
+<li>Compression disabled</li>
+<li>Minimum ephemeral key exchange sizes:
+<ul>
+<li>Elliptic curve Diffie-Hellman (ECDHE) [<a href="https://www.ietf.org/rfc/rfc4492.txt" data-linktype="external">RFC4492</a>]: 224 bits minimum</li>
+<li>Finite field Diffie-Hellman (DHE) [<code>TLS12</code>]: 2048 bits minimum</li>
+</ul>
+</li>
+<li>Cipher suite not prohibited.</li>
+</ul>
+<p><code>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</code> [<code>TLS-ECDHE</code>] with the P-256 elliptic curve [<code>FIPS186</code>] is supported by default.</p>
+<p>The following example permits HTTP/1.1 and HTTP/2 connections on port 8000. Connections are secured by TLS with a supplied certificate:</p>
+<pre><code class="lang-csharp">webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =&gt;
+    {
+        listenOptions.UseHttps("testCert.pfx", "testPassword");
+    });
+});
+</code></pre>
+<p>Use Connection Middleware to filter TLS handshakes on a per-connection basis for specific ciphers if required.</p>
+<p>The following example throws <a href="/en-us/dotnet/api/system.notsupportedexception" class="no-loc" data-linktype="absolute-path">NotSupportedException</a> for any cipher algorithm that the app doesn't support. Alternatively, define and compare <a href="/en-us/dotnet/api/microsoft.aspnetcore.connections.features.itlshandshakefeature.cipheralgorithm#microsoft-aspnetcore-connections-features-itlshandshakefeature-cipheralgorithm" data-linktype="absolute-path">ITlsHandshakeFeature.CipherAlgorithm</a> to a list of acceptable cipher suites.</p>
+<p>No encryption is used with a <a href="/en-us/dotnet/api/system.security.authentication.cipheralgorithmtype" data-linktype="absolute-path">CipherAlgorithmType.Null</a> cipher algorithm.</p>
+<pre><code class="lang-csharp">// using System.Net;
+// using Microsoft.AspNetCore.Connections;
+
+webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =&gt;
+    {
+        listenOptions.UseHttps("testCert.pfx", "testPassword");
+        listenOptions.UseTlsFilter();
+    });
+});
+</code></pre>
+<pre><code class="lang-csharp">using System;
+using System.Security.Authentication;
+using Microsoft.AspNetCore.Connections.Features;
+
+namespace Microsoft.AspNetCore.Connections
+{
+    public static class TlsFilterConnectionMiddlewareExtensions
+    {
+        public static IConnectionBuilder UseTlsFilter(
+            this IConnectionBuilder builder)
+        {
+            return builder.Use((connection, next) =&gt;
+            {
+                var tlsFeature = connection.Features.Get&lt;ITlsHandshakeFeature&gt;();
+
+                if (tlsFeature.CipherAlgorithm == CipherAlgorithmType.Null)
+                {
+                    throw new NotSupportedException("Prohibited cipher: " +
+                        tlsFeature.CipherAlgorithm);
+                }
+
+                return next();
+            });
+        }
+    }
+}
+</code></pre>
+<p>Connection filtering can also be configured via an <a href="/en-us/dotnet/api/microsoft.aspnetcore.connections.iconnectionbuilder" class="no-loc" data-linktype="absolute-path">IConnectionBuilder</a> lambda:</p>
+<pre><code class="lang-csharp">// using System;
+// using System.Net;
+// using System.Security.Authentication;
+// using Microsoft.AspNetCore.Connections;
+// using Microsoft.AspNetCore.Connections.Features;
+
+webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.Listen(IPAddress.Any, 8000, listenOptions =&gt;
+    {
+        listenOptions.UseHttps("testCert.pfx", "testPassword");
+        listenOptions.Use((context, next) =&gt;
+        {
+            var tlsFeature = context.Features.Get&lt;ITlsHandshakeFeature&gt;();
+
+            if (tlsFeature.CipherAlgorithm == CipherAlgorithmType.Null)
+            {
+                throw new NotSupportedException(
+                    $"Prohibited cipher: {tlsFeature.CipherAlgorithm}");
+            }
+
+            return next();
+        });
+    });
+});
+</code></pre>
+<p>On Linux, <a href="/en-us/dotnet/api/system.net.security.ciphersuitespolicy" class="no-loc" data-linktype="absolute-path">CipherSuitesPolicy</a> can be used to filter TLS handshakes on a per-connection basis:</p>
+<pre><code class="lang-csharp">// using System.Net.Security;
+// using Microsoft.AspNetCore.Hosting;
+// using Microsoft.AspNetCore.Server.Kestrel.Core;
+// using Microsoft.Extensions.DependencyInjection;
+// using Microsoft.Extensions.Hosting;
+
+webBuilder.ConfigureKestrel(serverOptions =&gt;
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =&gt;
+    {
+        listenOptions.OnAuthenticate = (context, sslOptions) =&gt;
+        {
+            sslOptions.CipherSuitesPolicy = new CipherSuitesPolicy(
+                new[]
+                {
+                    TlsCipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                    TlsCipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+                    // ...
+                });
+        };
+    });
+});
+</code></pre>
+<p><em>Set the protocol from configuration</em></p>
+<p><code>CreateDefaultBuilder</code> calls <code>serverOptions.Configure(context.Configuration.GetSection("Kestrel"))</code> by default to load Kestrel configuration.</p>
+<p>The following <code>appsettings.json</code> example establishes HTTP/1.1 as the default connection protocol for all endpoints:</p>
+<pre><code class="lang-json">{
+  "Kestrel": {
+    "EndpointDefaults": {
+      "Protocols": "Http1"
+    }
+  }
+}
+</code></pre>
+<p>The following <code>appsettings.json</code> example establishes the HTTP/1.1 connection protocol for a specific endpoint:</p>
+<pre><code class="lang-json">{
+  "Kestrel": {
+    "Endpoints": {
+      "HttpsDefaultCert": {
+        "Url": "https://localhost:5001",
+        "Protocols": "Http1"
+      }
+    }
+  }
+}
+</code></pre>
+<p>Protocols specified in code override values set by configuration.</p>
+<h3 id="url-prefixes">URL prefixes</h3>
+<p>When using <code>UseUrls</code>, <code>--urls</code> command-line argument, <code>urls</code> host configuration key, or <code>ASPNETCORE_URLS</code> environment variable, the URL prefixes can be in any of the following formats.</p>
+<p>Only HTTP URL prefixes are valid. Kestrel doesn't support HTTPS when configuring URL bindings using <code>UseUrls</code>.</p>
+<ul>
+<li><p>IPv4 address with port number</p>
+<pre><code>http://65.55.39.10:80/
+</code></pre>
+<p><code>0.0.0.0</code> is a special case that binds to all IPv4 addresses.</p>
+</li>
+<li><p>IPv6 address with port number</p>
+<pre><code>http://[0:0:0:0:0:ffff:4137:270a]:80/
+</code></pre>
+<p><code>[::]</code> is the IPv6 equivalent of IPv4 <code>0.0.0.0</code>.</p>
+</li>
+<li><p>Host name with port number</p>
+<pre><code>http://contoso.com:80/
+http://*:80/
+</code></pre>
+<p>Host names, <code>*</code>, and <code>+</code>, aren't special. Anything not recognized as a valid IP address or <code>localhost</code> binds to all IPv4 and IPv6 IPs. To bind different host names to different ASP.NET Core apps on the same port, use <a href="httpsys?view=aspnetcore-9.0" data-linktype="relative-path">HTTP.sys</a> or a reverse proxy server, such as IIS, Nginx, or Apache.</p>
+<div class="WARNING">
+<p>Warning</p>
+<p>Hosting in a reverse proxy configuration requires <a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Forwarded Headers Middleware configuration</a>.</p>
+</div>
+</li>
+<li><p>Host <code>localhost</code> name with port number or loopback IP with port number</p>
+<pre><code>http://localhost:5000/
+http://127.0.0.1:5000/
+http://[::1]:5000/
+</code></pre>
+<p>When <code>localhost</code> is specified, Kestrel attempts to bind to both IPv4 and IPv6 loopback interfaces. If the requested port is in use by another service on either loopback interface, Kestrel fails to start. If either loopback interface is unavailable for any other reason (most commonly because IPv6 isn't supported), Kestrel logs a warning.</p>
+</li>
+</ul>
+<h2 id="host-filtering">Host filtering</h2>
+<p>While Kestrel supports configuration based on prefixes such as <code>http://example.com:5000</code>, Kestrel largely ignores the host name. Host <code>localhost</code> is a special case used for binding to loopback addresses. Any host other than an explicit IP address binds to all public IP addresses. <code>Host</code> headers aren't validated.</p>
+<p>As a workaround, use Host Filtering Middleware. Host Filtering Middleware is provided by the <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.HostFiltering" data-linktype="external">Microsoft.AspNetCore.HostFiltering</a> package, which is implicitly provided for ASP.NET Core apps. The middleware is added by <a href="/en-us/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder" class="no-loc" data-linktype="absolute-path">CreateDefaultBuilder</a>, which calls <a href="/en-us/dotnet/api/microsoft.aspnetcore.builder.hostfilteringservicesextensions.addhostfiltering" class="no-loc" data-linktype="absolute-path">AddHostFiltering</a>:</p>
+<pre><code class="lang-csharp" highlight-lines="9">public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =&gt;
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup&lt;Startup&gt;();
+}
+</code></pre>
+<p>Host Filtering Middleware is disabled by default. To enable the middleware, define an <code>AllowedHosts</code> key in <code>appsettings.json</code>/<code>appsettings.{Environment}.json</code>. The value is a semicolon-delimited list of host names without port numbers:</p>
+<p><code>appsettings.json</code>:</p>
+<pre><code class="lang-json">{
+  "AllowedHosts": "example.com;localhost"
+}
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p><a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Forwarded Headers Middleware</a> also has an <a href="/en-us/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.allowedhosts#microsoft-aspnetcore-builder-forwardedheadersoptions-allowedhosts" class="no-loc" data-linktype="absolute-path">AllowedHosts</a> option. Forwarded Headers Middleware and Host Filtering Middleware have similar functionality for different scenarios. Setting <code>AllowedHosts</code> with Forwarded Headers Middleware is appropriate when the <code>Host</code> header isn't preserved while forwarding requests with a reverse proxy server or load balancer. Setting <code>AllowedHosts</code> with Host Filtering Middleware is appropriate when Kestrel is used as a public-facing edge server or when the <code>Host</code> header is directly forwarded.</p>
+<p>For more information on Forwarded Headers Middleware, see <a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Configure ASP.NET Core to work with proxy servers and load balancers</a>.</p>
+</div>
+<h2 id="libuv-transport-configuration">Libuv transport configuration</h2>
+<p>For projects that require the use of Libuv (<a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv" class="no-loc" data-linktype="absolute-path">UseLibuv</a>):</p>
+<ul>
+<li><p>Add a dependency for the <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv" data-linktype="external"><code>Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv</code></a> package to the app's project file:</p>
+<pre><code class="lang-xml">&lt;PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv"
+                  Version="{VERSION}" /&gt;
+</code></pre>
+</li>
+<li><p>Call <a href="/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderlibuvextensions.uselibuv" class="no-loc" data-linktype="absolute-path">UseLibuv</a> on the <code>IWebHostBuilder</code>:</p>
+<pre><code class="lang-csharp">public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =&gt;
+            {
+                webBuilder.UseLibuv();
+                webBuilder.UseStartup&lt;Startup&gt;();
+            });
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="http11-request-draining">HTTP/1.1 request draining</h2>
+<p>Opening HTTP connections is time consuming. For HTTPS, it's also resource intensive. Therefore, Kestrel tries to reuse connections per the HTTP/1.1 protocol. A request body must be fully consumed to allow the connection to be reused. The app doesn't always consume the request body, such as a <code>POST</code> requests where the server returns a redirect or 404 response. In the <code>POST</code>-redirect case:</p>
+<ul>
+<li>The client may already have sent part of the <code>POST</code> data.</li>
+<li>The server writes the 301 response.</li>
+<li>The connection can't be used for a new request until the <code>POST</code> data from the previous request body has been fully read.</li>
+<li>Kestrel tries to drain the request body. Draining the request body means reading and discarding the data without processing it.</li>
+</ul>
+<p>The draining process makes a tradeoff between allowing the connection to be reused and the time it takes to drain any remaining data:</p>
+<ul>
+<li>Draining has a timeout of five seconds, which isn't configurable.</li>
+<li>If all of the data specified by the <code>Content-Length</code> or <code>Transfer-Encoding</code> header hasn't been read before the timeout, the connection is closed.</li>
+</ul>
+<p>Sometimes you may want to terminate the request immediately, before or after writing the response. For example, clients may have restrictive data caps, so limiting uploaded data might be a priority. In such cases to terminate a request, call <a href="/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontext.abort" data-linktype="absolute-path">HttpContext.Abort</a> from a controller, Razor Page, or middleware.</p>
+<p>There are caveats to calling <code>Abort</code>:</p>
+<ul>
+<li>Creating new connections can be slow and expensive.</li>
+<li>There's no guarantee that the client has read the response before the connection closes.</li>
+<li>Calling <code>Abort</code> should be rare and reserved for severe error cases, not common errors.
+<ul>
+<li>Only call <code>Abort</code> when a specific problem needs to be solved. For example, call <code>Abort</code> if malicious clients are trying to <code>POST</code> data or when there's a bug in client code that causes large or numerous requests.</li>
+<li>Don't call <code>Abort</code> for common error situations, such as HTTP 404 (Not Found).</li>
+</ul>
+</li>
+</ul>
+<p>Calling <a href="/en-us/dotnet/api/microsoft.aspnetcore.http.httpresponse.completeasync" data-linktype="absolute-path">HttpResponse.CompleteAsync</a> before calling <code>Abort</code> ensures that the server has completed writing the response. However, client behavior isn't predictable and they may not read the response before the connection is aborted.</p>
+<p>This process is different for HTTP/2 because the protocol supports aborting individual request streams without closing the connection. The five second drain timeout doesn't apply. If there's any unread request body data after completing a response, then the server sends an HTTP/2 RST frame. Additional request body data frames are ignored.</p>
+<p>If possible, it's better for clients to utilize the <a href="https://developer.mozilla.org/docs/Web/HTTP/Status/100" data-linktype="external">Expect: 100-continue</a> request header and wait for the server to respond before starting to send the request body. That gives the client an opportunity to examine the response and abort before sending unneeded data.</p>
+<h2 id="additional-resources-2">Additional resources</h2>
+<ul>
+<li>When using UNIX sockets on Linux, the socket is not automatically deleted on app shut down. For more information, see <a href="https://github.com/dotnet/aspnetcore/issues/14134" data-linktype="external">this GitHub issue</a>.</li>
+<li><a href="../../test/troubleshoot?view=aspnetcore-9.0" data-linktype="relative-path">Troubleshoot and debug ASP.NET Core projects</a></li>
+<li><a href="../../security/enforcing-ssl?view=aspnetcore-9.0" data-linktype="relative-path">Enforce HTTPS in ASP.NET Core</a></li>
+<li><a href="../../host-and-deploy/proxy-load-balancer?view=aspnetcore-9.0" data-linktype="relative-path">Configure ASP.NET Core to work with proxy servers and load balancers</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110#field.host" data-linktype="external">RFC 9110: HTTP Semantics (Section 7.2: Host and :authority)</a></li>
+</ul>
+</div>
+</div><div id="ms--inline-notifications" class="margin-block-xs" data-bi-name="inline-notification"></div><div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main><!-- recommendations section --><!-- end recommendations section -->
+
+						<!-- feedback section --><section class="feedback-section position-relative margin-top-lg border border-radius padding-xxs" data-bi-name="open-source-feedback-section" data-open-source-feedback-section hidden>
+	<div class="display-flex flex-direction-column flex-direction-row-tablet">
+		<div class="width-450-tablet padding-inline-xs padding-inline-xs-tablet padding-top-xs padding-bottom-sm padding-top-xs-tablet background-color-body-medium">
+			<div class="display-flex flex-direction-column">
+				<div class="padding-bottom-xxs">
+					<span class="icon margin-right-xxs" aria-hidden="true">
+						<span class="docon docon-brand-github"></span>
+					</span>
+					<span class="font-weight-semibold"
+						>Collaborate with us on GitHub</span>
+				</div>
+				<span class="line-height-normal">
+					The source for this content can be found on GitHub, where you can also create and review issues and pull requests. For more information, see <a href="https://learn.microsoft.com/contribute/content/dotnet/dotnet-contribute">our contributor guide</a>.
+				</span>
+			</div>
+		</div>
+		<div class="display-flex gap-xs width-full-tablet flex-direction-column padding-xs justify-content-space-evenly">
+			<div class="media"><div class="media-left">
+					<div class="image image-36x36" hidden data-open-source-image-container>
+						<img class="theme-display is-light" src="https://learn.microsoft.com/media/logos/logo_net.svg" aria-hidden="true" data-open-source-image-light/>
+						<img class="theme-display is-dark is-high-contrast" src="https://learn.microsoft.com/media/logos/logo_net.svg" aria-hidden="true" data-open-source-image-dark/>
+					</div>
+					</div>
+				
+				<div class="media-content">
+					<p class="font-size-xl font-weight-semibold margin-bottom-xxs" data-open-source-product-title>ASP.NET Core</p>
+					<div class="display-flex gap-xs flex-direction-column">
+						<p class="line-height-normal" data-open-source-product-description></p>
+						<div class="display-flex gap-xs flex-direction-column">
+							<a href="" data-github-link>
+								<span class="icon margin-right-xxs" aria-hidden="true">
+									<span class="docon docon-bug"></span>
+								</span>
+								<span>Open a documentation issue</span>
+							</a>
+							<a href="https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md" class="display-block margin-top-auto font-size-md" data-feedback-product-url>
+								<span class="icon margin-right-xxs" aria-hidden="true">
+									<span class="docon docon-feedback"></span>
+								</span>
+								<span>Provide product feedback</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><!-- end feedback section -->
+
+						<!-- feedback report section --><!-- end feedback report section --><aside
+								id="ms--additional-resources-mobile"
+								aria-label="Additional resources"
+								class="display-none-desktop display-none-print"
+							>
+								<hr class="hr" hidden />
+								<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>Additional resources</h2>
+								<section id="right-rail-recommendations-mobile" data-bi-name="recommendations" hidden></section>
+								<section id="right-rail-training-mobile" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-events-mobile" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-qna-mobile" data-bi-name="qna-link-card" hidden></section>
+							</aside><div class="border-top is-visible-interactive has-default-focus margin-top-sm "><footer id="footer-interactive" data-bi-name="footer" class="footer-layout"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		role="img"
+		aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		focusable="false"
+	>
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer></div></div><div
+							id="ms--additional-resources"
+							class="right-container column is-4-desktop display-none display-block-desktop"
+							data-bi-name="pageactions"
+							role="complementary"
+							aria-label="Additional resources"
+						>
+							<div id="affixed-right-container" class="margin-top-sm-tablet" data-bi-name="right-column">
+								<h2 id="ms--additional-resources-heading" class="title is-6 margin-top-md" hidden>Additional resources</h2>
+								<section id="right-rail-events" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-training" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations" hidden></section>
+								<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" aria-label="In this article">
+									<h3>In this article</h3>
+								</nav>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden></section>
+							</div>
+						</div></div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm "><footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		role="img"
+		aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		focusable="false"
+	>
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2025</li>
+	</ul>
+</footer>
+
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>

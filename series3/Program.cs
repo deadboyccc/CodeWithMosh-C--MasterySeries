@@ -1,13 +1,42 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace series3;
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
+    {
+        System.Console.WriteLine("start");
+        await HtmlDownloader.DownloadAsync("https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-9.0");
+        System.Console.WriteLine("end");
+        using var streamReader = new StreamReader("./data.txt");
+        string? line;
+        int linesToRead = 5;
+        while (linesToRead > 0)
+        {
+
+            line = await streamReader.ReadLineAsync();
+            if (line == null) break;
+            Console.WriteLine(line);
+            linesToRead--;
+        }
+
+    }
+    public class HtmlDownloader
     {
 
+        public static async Task DownloadAsync(string url)
+        {
+            using var httpClient = new HttpClient();
+            using var streamwriter = new StreamWriter("./data.txt");
+
+            var html = await httpClient.GetStringAsync(url);
+
+            await streamwriter.WriteAsync(html);
+
+        }
     }
     private static void ExceptionHandling()
     {
