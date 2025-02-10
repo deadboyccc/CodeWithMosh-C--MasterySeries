@@ -10,6 +10,27 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var result = new Calculator().Add(10.342, 2342.14);
+        System.Console.WriteLine(result);
+
+
+    }
+    #region interfaces
+    public interface IArithmeticAdd
+    {
+        double Add(double a, double b);
+    }
+    public class Calculator : IArithmeticAdd
+    {
+        public double Add(double a, double b)
+        {
+            return a + b;
+        }
+    }
+    #endregion
+
+    private static void poly()
+    {
         Circle circle = new Circle() { Width = 5, Height = 5, X = 10, Y = 10 };
         Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle() { Width = 5, Height = 5, X = 15, Y = 15 };
@@ -20,7 +41,6 @@ internal class Program
         {
             shape.Draw();
         }
-
     }
     #region poly
     public class Triangle : Shape
