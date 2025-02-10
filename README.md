@@ -2,12 +2,6 @@
 
 This repository contains my personal notes from the C# Mastery Series by CodeWithMosh. It serves as a playground for refreshing my C# and .NET skills through tutorial exercises, rather than a reference.
 
-## 📌 Purpose
-
-- Summarize essential concepts and best practices.
-- Provide code snippets and explanations for quick review.
-- Improve retention by reinforcing learned topics.
-
 ## 📚 Topics Covered
 
 - C# Fundamentals
