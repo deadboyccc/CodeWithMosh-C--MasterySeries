@@ -10,6 +10,22 @@ class Program
 
     }
 
+    private static void NoWay()
+    {
+        dynamic a = 10;
+        a = "hello";
+    }
+
+    private static void NullableTypes()
+    {
+        // could be null - encapsulate the value type into a nullable type which can be null
+        Nullable<DateTime> date1 = new DateTime(2022, 10, 10);
+        // shorthand for Nullable<T> --> valueType?
+        DateTime? date2;
+        date2 = date1 ?? DateTime.Today;
+        Console.WriteLine(date1.GetValueOrDefault()); // will print 2022-10-10
+    }
+
     private static void LINQ()
     {
         var bookList = new BookList()
