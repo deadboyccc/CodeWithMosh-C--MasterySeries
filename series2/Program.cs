@@ -12,10 +12,81 @@ internal class Program
     {
         var result = new Calculator().Add(10.342, 2342.14);
         System.Console.WriteLine(result);
+        var databaseMigrator = new DbMigrator(new ConsoleLogger());
+        databaseMigrator.Migrate();
+        databaseMigrator.Migrate();
+        var FileLogDBMigrator = new DbMigrator(new FileLogger());
+        FileLogDBMigrator.Migrate();
+        FileLogDBMigrator.Migrate();
+        FileLogDBMigrator.Migrate();
+
+
 
 
     }
     #region interfaces
+    public class FileLogger : ILogger
+    {
+        public void Log(string message)
+        {
+            File.AppendAllText("./data/log.txt", message);
+
+        }
+
+        public void LogError(string message)
+        {
+            File.AppendAllText("./data/error.txt", message);
+
+        }
+    }
+    public class DbMigrator
+    {
+        private readonly ILogger logger;
+
+        // dependency injection (in the constructor u write out the needed depenencies for the Migrator class)
+        // injecting the depencies into the constructor 
+        public DbMigrator(ILogger logger)
+        {
+            this.logger = logger;
+        }
+        public void Migrate()
+        {
+            logger.Log("Migrating database...");
+            var num = new Random().Next(1, 3);
+            if (num == 1)
+            {
+                ReportErrors();
+
+            }
+
+        }
+        private void ReportErrors()
+        {
+            logger.LogError("Error during migration");
+        }
+
+    }
+    public interface ILogger
+    {
+        void Log(string message);
+        void LogError(string message);
+    }
+    public class ConsoleLogger : ILogger
+    {
+        public void Log(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine($"[{DateTime.Now}] {message}");
+            Console.ForegroundColor = default;
+        }
+        public void LogError(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.WriteLine($"[{DateTime.Now}] ERROR: {message}");
+            Console.ForegroundColor = default;
+        }
+
+    }
     public interface IArithmeticAdd
     {
         double Add(double a, double b);
