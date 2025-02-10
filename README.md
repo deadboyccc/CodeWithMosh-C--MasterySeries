@@ -1,6 +1,7 @@
 # C# Mastery Series - Notes & Documentation
 
-This repository is my personal documentation and notes from following the **C# Mastery Series** by CodeWithMosh. This serves as a playground for me going through a series of tutorials to refresh my C# and .NET skills, rather than a reference.
+This repository contains my personal notes from the C# Mastery Series by CodeWithMosh. It serves as a playground for refreshing my C# and .NET skills through tutorial exercises, rather than a reference.
+
 ## 📌 Purpose
 
 - Summarize essential concepts and best practices.
