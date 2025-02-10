@@ -7,6 +7,10 @@ class Program
 {
     static void Main(string[] args)
     {
+    }
+
+    private static void Lambda()
+    {
         #region lambda
         Func<int, int> square = (num) => num * num;
         Console.WriteLine(square(10));
@@ -21,7 +25,6 @@ class Program
         cheapBooks.ForEach((item) => Console.WriteLine(item.Price));
 
         #endregion
-
     }
 
     /*
