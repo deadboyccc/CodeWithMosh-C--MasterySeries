@@ -7,10 +7,58 @@ class Program
 {
     static void Main(string[] args)
     {
-        System.Console.WriteLine(new string("a b c d e ").Shortern(2));
 
     }
 
+    private static void LINQ()
+    {
+        var bookList = new BookList()
+        {
+            Books = new List<Book>(){
+                new Book(10, "Book 1"),
+                new Book(20, "Book 2"),
+                new Book(30, "Book 3"),
+                new Book(40, "Book 4"),
+                new Book(50, "Book 5"),
+            }
+        };
+        IEnumerable<Book> EnuList = bookList.GetBooks();
+        var newList = EnuList.Where(book => book.Price < 31).OrderBy(book => book.Price).Select(book => book.Title);
+        foreach (var book in newList)
+        {
+            Console.WriteLine(book);
+        }
+    }
+
+    public class Book
+    {
+        public string Title { get; set; }
+        public decimal Price { get; set; }
+        public Book(int a, string b)
+
+        {
+            Title = b;
+            Price = a;
+
+        }
+    }
+    public class BookList
+    {
+        public IEnumerable<Book> Books { get; set; } = new List<Book>();
+        public void AddBook(Book book)
+        {
+            Books = Books.Append(book);
+        }
+        public IEnumerable<Book> GetBooks()
+        {
+            return Books;
+        }
+    }
+
+    private static void ExtentionMethods()
+    {
+        System.Console.WriteLine(new string("a b c d e ").Shortern(2));
+    }
 
     private static void DelegatesEvents()
     {
