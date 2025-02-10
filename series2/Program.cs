@@ -11,7 +11,7 @@ internal class Program
     static void Main(string[] args)
     {
         var result = new Calculator().Add(10.342, 2342.14);
-        System.Console.WriteLine(result);
+        Console.WriteLine(result);
         var databaseMigrator = new DbMigrator(new ConsoleLogger());
         databaseMigrator.Migrate();
         databaseMigrator.Migrate();
@@ -19,12 +19,40 @@ internal class Program
         FileLogDBMigrator.Migrate();
         FileLogDBMigrator.Migrate();
         FileLogDBMigrator.Migrate();
+        var StreamLogDBMigrator = new DbMigrator(new StreamLogger());
+        StreamLogDBMigrator.Migrate();
+        StreamLogDBMigrator.Migrate();
+        StreamLogDBMigrator.Migrate();
+
 
 
 
 
     }
     #region interfaces
+    public class StreamLogger : ILogger
+    {
+        public void Log(string message)
+        {
+            // use "using" so if an error happens or outside the scope of the block it will auto dispose/close the stream/file hanlder
+            using (var StreamWriter = new StreamWriter("./data/log.txt", true))
+            {
+
+                StreamWriter.WriteLine($"Log: {message}");
+                StreamWriter.Dispose();
+            }
+        }
+
+        public void LogError(string message)
+        {
+            using (var StreamWriter = new StreamWriter("./data/error.txt", true))
+            {
+                StreamWriter.WriteLine($"Error: {message}");
+                StreamWriter.Dispose();
+            }
+        }
+    }
+
     public class FileLogger : ILogger
     {
         public void Log(string message)
@@ -76,13 +104,13 @@ internal class Program
         public void Log(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            System.Console.WriteLine($"[{DateTime.Now}] {message}");
+            Console.WriteLine($"[{DateTime.Now}] {message}");
             Console.ForegroundColor = default;
         }
         public void LogError(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.WriteLine($"[{DateTime.Now}] ERROR: {message}");
+            Console.WriteLine($"[{DateTime.Now}] ERROR: {message}");
             Console.ForegroundColor = default;
         }
 
@@ -118,7 +146,7 @@ internal class Program
     {
         public override void Draw()
         {
-            System.Console.WriteLine("Drawing Triangle");
+            Console.WriteLine("Drawing Triangle");
 
         }
     }
@@ -126,7 +154,7 @@ internal class Program
     {
         public override void Draw()
         {
-            System.Console.WriteLine("Drawing Circle");
+            Console.WriteLine("Drawing Circle");
         }
 
     }
@@ -134,7 +162,7 @@ internal class Program
     {
         public override void Draw()
         {
-            System.Console.WriteLine("Drawing Rectangle");
+            Console.WriteLine("Drawing Rectangle");
 
         }
 
@@ -160,19 +188,19 @@ internal class Program
             castedTextBo?.Draw();
             if (castedTextBo is TextBox)
             {
-                System.Console.WriteLine("true ");
+                Console.WriteLine("true ");
             }
 
             textBox.Width = 100;
             shape.Width = 50;
-            System.Console.WriteLine(shape.Width);
+            Console.WriteLine(shape.Width);
             var objList = new ArrayList();
             objList.Add(new Car("137", 4));
             objList.Add(1);
             foreach (var obj in objList)
             {
                 await WaitOneSec();
-                System.Console.WriteLine(obj.GetType());
+                Console.WriteLine(obj.GetType());
 
             }
         }
@@ -204,7 +232,7 @@ internal class Program
             public string LegalNum { get; set; }
             public Vehicle(string legalNum)
             {
-                System.Console.WriteLine($"Vehile Init {legalNum}");
+                Console.WriteLine($"Vehile Init {legalNum}");
                 LegalNum = legalNum;
             }
         }
@@ -213,7 +241,7 @@ internal class Program
             public int Doors { get; set; }
             public Car(string legalNum, int doors) : base(legalNum)
             {
-                System.Console.WriteLine($"Car Init {legalNum}");
+                Console.WriteLine($"Car Init {legalNum}");
                 Doors = doors;
             }
         }
@@ -269,7 +297,7 @@ internal class Program
         {
             public void LogMessage(string message)
             {
-                System.Console.WriteLine($"[{DateTime.Now}] {message}");
+                Console.WriteLine($"[{DateTime.Now}] {message}");
             }
         }
         class DbMigrator
@@ -309,7 +337,7 @@ internal class Program
             public string? TextContent { get; set; }
             public void addHyperlink(string url)
             {
-                System.Console.WriteLine($"add hyperlink: {url}");
+                Console.WriteLine($"add hyperlink: {url}");
             }
         }
         class PresentationObject
@@ -319,12 +347,12 @@ internal class Program
             public int Height { get; set; }
             public void Copy()
             {
-                System.Console.WriteLine("copy");
+                Console.WriteLine("copy");
 
             }
             public void Duplicate()
             {
-                System.Console.WriteLine("duplicate");
+                Console.WriteLine("duplicate");
 
             }
 
@@ -338,11 +366,11 @@ internal class Program
             Console.WriteLine(new StringBuilder().Append('-', 20));
             Console.WriteLine("Hello, World!");
             var p1 = Person.Parse("Joe", 12);
-            System.Console.WriteLine(p1);
+            Console.WriteLine(p1);
             Console.WriteLine(new StringBuilder().Append('-', 20));
             var p2 = new Person { Name = "Biden", Age = 101 };
             p2.friends.Add(p1);
-            System.Console.WriteLine(p2);
+            Console.WriteLine(p2);
             Console.WriteLine(new StringBuilder().Append('-', 20));
             #endregion
 

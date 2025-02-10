@@ -9,7 +9,7 @@ class Program
     {
         #region lambda
         Func<int, int> square = (num) => num * num;
-        System.Console.WriteLine(square(10));
+        Console.WriteLine(square(10));
         var books = new List<Product>{
             new Product{Name="Book1", Price=1},
             new Product{Name="Book2", Price=2},

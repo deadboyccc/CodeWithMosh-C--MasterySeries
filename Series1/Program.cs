@@ -18,17 +18,17 @@ internal partial class Program
       var text = File.ReadAllText(filePathEx);
       int count = text.Aggregate(0, (acc, c) => (c == 'F' || c == 'f') ? acc + 1 : acc);
 
-      System.Console.WriteLine(text.ElementAt(0));
+      Console.WriteLine(text.ElementAt(0));
     }
     if (Directory.Exists("."))
     {
       var files = Directory.GetFiles(".", "*.cs");
       foreach (var file in files)
       {
-        System.Console.WriteLine(file);
+        Console.WriteLine(file);
       }
       var CurrentDirectory = Directory.GetCurrentDirectory();
-      System.Console.WriteLine($"cwd : {CurrentDirectory}");
+      Console.WriteLine($"cwd : {CurrentDirectory}");
     }
     // path parse
     #region Path
@@ -43,28 +43,28 @@ internal partial class Program
   {
     Console.WriteLine(new StringBuilder().Append('*', 12));
     Series1.types.Enu testEnum = types.Enu.Three;
-    System.Console.WriteLine(testEnum);
-    System.Console.WriteLine((uint)testEnum);
+    Console.WriteLine(testEnum);
+    Console.WriteLine((uint)testEnum);
     var test = 2;
-    System.Console.WriteLine((types.Enu)test);
+    Console.WriteLine((types.Enu)test);
     // returns an object cast it to the type of 
     var finalResult = (Series1.types.Enu)Enum.Parse(typeof(Series1.types.Enu), "One");
-    System.Console.WriteLine("---------");
-    System.Console.WriteLine("---------");
-    System.Console.WriteLine(finalResult);
+    Console.WriteLine("---------");
+    Console.WriteLine("---------");
+    Console.WriteLine(finalResult);
     var date = DateTime.Now;
     var duration = new TimeSpan(1, 2, 3);
     Console.WriteLine(new StringBuilder().Append('*', 12));
-    System.Console.WriteLine(date.ToString("HH"));
-    System.Console.WriteLine("---------");
-    System.Console.WriteLine("---------");
+    Console.WriteLine(date.ToString("HH"));
+    Console.WriteLine("---------");
+    Console.WriteLine("---------");
     var p1 = new Person("Ahmed", 99);
     Console.WriteLine(mathTest.Math.Add(1, p1.Age));
     Console.WriteLine("1-1 was a course intro");
     Console.WriteLine("1-2 talks about .net architecture, c# vs .net and the CLR and IR defs");
     Console.WriteLine("assemblies -> namespaces -> classes(building unit)");
     Console.WriteLine("C# -> IR code ->CLR is like the jvm");
-    System.Console.WriteLine("cw -> cw snippet");
+    Console.WriteLine("cw -> cw snippet");
     Console.Beep(); // windows specific 
     byte testByte = 255;
     ++testByte;
