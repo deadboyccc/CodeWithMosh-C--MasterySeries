@@ -10,6 +10,63 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+    }
+
+    private static void EncryptAndSendNotifcations()
+    {
+        var Encrypter = new Encrypt("pass123");
+        Encrypter.DoTheEncryption();
+        Encrypter.DoTheEncryption();
+    }
+    #region Delegate to send notifications(sms&email etc...) after encoding a password
+    public class Encrypt
+    {
+        public string? str;
+        public delegate void SendNotification(string message);
+        public Encrypt(string textToEncrypt)
+        {
+            str = textToEncrypt;
+
+        }
+
+        public void DoTheEncryption()
+        {
+            // Encrypt the string
+            str = "jfewopaijfeapfejiaowjfpioejf@#j42913028____XD";
+            // attaching methods to the delegate so that the delagete object calls them :3(not implementing an event)
+            SendNotification sendNotificationService;
+            sendNotificationService = new SmsSenderService().Send;
+            sendNotificationService += new EmailSenderSerivce().Send;
+            sendNotificationService.Invoke("Done Encrypting! ");
+            // call the delegate
+
+        }
+        public interface ISenderService
+        {
+            void Send(string message);
+        }
+        public class EmailSenderSerivce : ISenderService
+        {
+            public void Send(string message)
+            {
+                // simple log
+                Console.WriteLine($"Email sent: {message}");
+            }
+        }
+        public class SmsSenderService : ISenderService
+        {
+            public void Send(string message)
+            {
+                // simple log
+                Console.WriteLine($"SMS sent: {message}");
+            }
+        }
+    }
+    #endregion
+
+    private static void DependencyInjection()
+    {
         var result = new Calculator().Add(10.342, 2342.14);
         Console.WriteLine(result);
         var databaseMigrator = new DbMigrator(new ConsoleLogger());
@@ -23,11 +80,6 @@ internal class Program
         StreamLogDBMigrator.Migrate();
         StreamLogDBMigrator.Migrate();
         StreamLogDBMigrator.Migrate();
-
-
-
-
-
     }
     #region interfaces
     public class StreamLogger : ILogger
