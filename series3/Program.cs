@@ -1,12 +1,128 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace series3;
-
 class Program
 {
     static void Main(string[] args)
     {
+        System.Console.WriteLine(new string("a b c d e ").Shortern(2));
+
+    }
+
+
+    private static void DelegatesEvents()
+    {
+        // delegate Action
+        Action<int> lamba1 = (int a) => Console.WriteLine(a);
+        // delgate func
+        Func<int, int> lambda2 = (int a) => a * 2;
+
+
+        Console.WriteLine(new StringBuilder().Append('-', 20).ToString());
+        var video = new Video("New1");
+        var mailService = new MailService(); //sub
+        var smsService = new SMSService(); //sub
+        var videoEncoder = new VideoEncoder();//publisher
+        videoEncoder.VideoEncoded += smsService.SendSMS;
+        videoEncoder.VideoEncoded += mailService.SendMail;
+        videoEncoder.Encode(video);
+        Console.WriteLine(new StringBuilder().Append('-', 20).ToString());
+    }
+
+
+    public class VideoEncodingEventArgs : EventArgs
+    {
+        public Video Video { get; set; }
+        public VideoEncodingEventArgs(Video v)
+        {
+            Video = v;
+        }
+
+    }
+    public class Video
+    {
+        public string Title { get; set; }
+        public Video(string t)
+        {
+            Title = t;
+
+        }
+    }
+    public class MailService
+    {
+        public void SendMail(object? sender, VideoEncodingEventArgs e)
+        {
+            // sending mail to subscribers [pubsub pattern between classes]
+            //simple log
+            Console.WriteLine($"Sending mail notification to subscribers [Video Title]:[{e.Video.Title}]");
+        }
+    }
+    public class SMSService
+    {
+        public void SendSMS(object? sender, VideoEncodingEventArgs e)
+        {
+            // sending sms to subscribers [pubsub pattern between classes]
+            // simple log that includ
+            Console.WriteLine($"Sending SMS notification to subscribers [Video Title]:[{e.Video.Title}]");
+
+
+        }
+    }
+
+    public class VideoEncoder
+    {
+        //1- Delegate
+        public delegate void VideoEncodedEventHandler(object sender, VideoEncodingEventArgs e);
+        //2- Event
+
+        // instead of creating the delegate manually u can use the EventHanlder Generic helper
+        public event EventHandler<VideoEncodingEventArgs>? VideoEncoded;
+        public void Encode(Video video)
+        {
+            Console.WriteLine($"Encoding {video.Title}");
+            Thread.Sleep(800); // simulating encoding time
+            OnVideoEncoded(new VideoEncodingEventArgs(video));
+
+        }
+
+        protected virtual void OnVideoEncoded(VideoEncodingEventArgs e)
+        {
+            VideoEncoded?.Invoke(this, e);
+        }
+    }
+
+    private static void clicky()
+    {
+        var btn = new Button();
+        // click being the event
+        // event hanlders that follow the PREDEFINED sender , eventargs 
+        btn.Click += (sender, e) => Console.WriteLine("Button clicked using lambda 0| ");
+        btn.Click += (sender, e) => Console.WriteLine("Button clicked using lambda 1| ");
+        btn.Click += (sender, e) => Console.WriteLine("Button clicked using lambda 2| ");
+
+        // call the event handler directly
+        // btn.OnClickHandler(btn, EventArgs.Empty);
+
+        // calling the eventHanlder witht a method
+        btn.SimulateClick();
+    }
+
+    public class Button
+    {
+        public event EventHandler? Click;
+        public void OnClickHandler(object sender, EventArgs e)
+        {
+            Console.WriteLine("Button cliked!");
+            // invoking the Event (running all the delegate functions attached to it) 
+            // e being the args, this = the sender (the same obj)
+            Click?.Invoke(this, e);
+        }
+        public void SimulateClick()
+        {
+            OnClickHandler(this, EventArgs.Empty);
+        }
     }
 
     private static void Lambda()
@@ -145,3 +261,26 @@ class Program
         }
     }
 }
+
+#region Extension Methods
+// convention : Static class 
+public static class RichString
+{
+    public static string Shortern(this String str, int wordCount)
+    {
+        var words = str.Split(' ');
+        if (wordCount == 0)
+            return "";
+        if (words.Length < wordCount)
+            return str;
+
+        if (words.Length > wordCount)
+        {
+            var newWordsArr = words.Take(wordCount);
+            return string.Join(" ", newWordsArr);
+        }
+
+        return str;
+    }
+}
+#endregion
